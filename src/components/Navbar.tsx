@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { Toggle } from "@/components/base/toggle/toggle";
+
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
