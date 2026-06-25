@@ -33,8 +33,8 @@ const SecretStuffSection = () => {
           </h2>
         </div>
 
-        {/* 3-column grid with gaps */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr_1fr] gap-[30px]">
+        {/* 2-column grid with gaps */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-[30px]">
           {/* Column 1 - Profile/Experience Card */}
           <div className="relative min-h-[500px] lg:min-h-[600px] overflow-hidden border border-border">
             <img src={secretProfile} alt="Profile" className="absolute inset-0 w-full h-full object-cover" />
@@ -86,26 +86,8 @@ const SecretStuffSection = () => {
               </Button>
             </div>
           </div>
-
-          {/* Column 3 - Testimonial Card */}
-          <div className="relative min-h-[500px] lg:min-h-[600px] bg-card p-8 flex flex-col border border-border px-[20px] py-[20px]">
-            {/* Top label */}
-            <div className="flex items-center gap-2 mb-auto">
-              <span className="w-2 h-2 rounded-full bg-accent" />
-              <span className="text-sm text-foreground/70">Testimonial</span>
-            </div>
-
-            {/* Quote */}
-            <div className="mt-auto">
-              <p className="text-2xl md:text-3xl lg:text-2xl font-normal text-primary leading-relaxed mb-6 xl:text-2xl">
-                "Phaneendra brings clarity and craft to every visual—turning complex ideas into clean, on-brand designs that connect with people."
-              </p>
-              <p className="text-sm text-foreground/60">
-                Cognizant – Visual Design Team
-              </p>
-            </div>
-          </div>
         </div>
+
       </div>
     </section>
   );
