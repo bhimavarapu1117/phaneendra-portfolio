@@ -6,6 +6,7 @@ const HeroBackground = () => {
   const [shouldLoad, setShouldLoad] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const durationRef = useRef(0);
+  const aboutTopRef = useRef(0);
 
   // Lazy-load: only attach src when hero is near the viewport
   useEffect(() => {
@@ -27,25 +28,35 @@ const HeroBackground = () => {
   }, [shouldLoad]);
 
   useEffect(() => {
+    const about = document.getElementById("about");
     const update = () => {
       const vh = window.innerHeight || 1;
-      const scrubRange = vh * 2;
+      // Use the top of the About section as the full-playback point so the
+      // intro video finishes right as the About images come on screen.
+      const scrubRange = aboutTopRef.current || about?.offsetTop || vh;
       const p = Math.min(1, Math.max(0, window.scrollY / scrubRange));
       setProgress(p);
 
       const v = videoRef.current;
       const d = durationRef.current;
       if (v && d > 0) {
-        const t = Math.min(d - 0.05, p * d);
+        const t = Math.min(d - 0.02, p * d);
         if (Math.abs(v.currentTime - t) > 0.03) v.currentTime = t;
       }
     };
-    update();
+
+    const measure = () => {
+      const about = document.getElementById("about");
+      aboutTopRef.current = about?.offsetTop || window.innerHeight || 1;
+      update();
+    };
+
+    measure();
     window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
+    window.addEventListener("resize", measure);
     return () => {
       window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
+      window.removeEventListener("resize", measure);
     };
   }, []);
 
@@ -74,9 +85,10 @@ const HeroBackground = () => {
           }}
         />
       )}
-      
+
     </div>
   );
 };
 
 export default HeroBackground;
+
