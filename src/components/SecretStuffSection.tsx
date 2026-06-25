@@ -98,10 +98,10 @@ const SecretStuffSection = () => {
             {/* Quote */}
             <div className="mt-auto">
               <p className="text-2xl md:text-3xl lg:text-2xl font-normal text-primary leading-relaxed mb-6 xl:text-2xl">
-                "Emma transformed our brand vision into stunning 3D visuals that exceeded every expectation. Her attention to detail is unmatched."
+                "Phaneendra brings clarity and craft to every visual—turning complex ideas into clean, on-brand designs that connect with people."
               </p>
               <p className="text-sm text-foreground/60">
-                Sarah Chen – Creative Director, Lumina Studios
+                Cognizant – Visual Design Team
               </p>
             </div>
           </div>
