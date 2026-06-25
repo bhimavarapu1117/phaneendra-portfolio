@@ -12,11 +12,11 @@ const ContactSection = () => {
           <img
             src={contactBg}
             alt="Contact background"
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover dark:invert-0 invert"
           />
           
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-background/20" />
+          {/* Theme-aware Overlay */}
+          <div className="absolute inset-0 bg-background/40 dark:bg-background/20" />
           
           {/* Content Container */}
           <div className="relative z-10 h-full flex flex-col items-center justify-center gap-4 px-4 md:px-0 py-8 md:py-0">
