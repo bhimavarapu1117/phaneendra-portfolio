@@ -84,31 +84,6 @@ const Footer = () => {
       <div className="border-t border-border">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            {/* Credits */}
-            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-xs text-muted-foreground">
-              <span className="flex items-center gap-1.5">
-                Made with <span className="text-red-500">♥</span> by{" "}
-                <a 
-                  href="#" 
-                  className="text-foreground hover:text-accent transition-colors"
-                >
-                  Oversight Studio
-                </a>
-              </span>
-              <span className="hidden sm:block text-border">|</span>
-              <span>
-                Created on{" "}
-                <a 
-                  href="https://lovable.dev" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-foreground hover:text-accent transition-colors"
-                >
-                  Lovable
-                </a>
-                {" "}using only prompts
-              </span>
-            </div>
 
             {/* Copyright */}
             <p className="text-xs text-muted-foreground">
