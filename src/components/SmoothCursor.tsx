@@ -86,6 +86,7 @@ const SmoothCursor = () => {
           left: 0,
           width: 6,
           height: 6,
+          borderRadius: "50%",
           background: dotColor,
           pointerEvents: "none",
           zIndex: 2147483647,
