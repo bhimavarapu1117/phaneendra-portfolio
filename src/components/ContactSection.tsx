@@ -3,10 +3,10 @@ import contactBg from "@/assets/contact-bg.jpg";
 
 const ContactSection = () => {
   const navLinks = [
-    { label: "Email", href: "mailto:hello@emmarose.design" },
-    { label: "Call me", href: "tel:+15551234567" },
-    { label: "Instagram", href: "https://instagram.com/emmarose" },
-    { label: "Twitter", href: "https://twitter.com/emmarose" },
+    { label: "Email", href: "mailto:phaneendrareddy.design@gmail.com" },
+    { label: "Location", href: "#" },
+    { label: "Instagram", href: "https://instagram.com/" },
+    { label: "LinkedIn", href: "https://linkedin.com/" },
   ];
 
   return (
@@ -84,13 +84,13 @@ const ContactSection = () => {
                 
                 {/* Name Text */}
                 <h2 className="text-3xl md:text-5xl lg:text-6xl font-medium text-foreground whitespace-nowrap">
-                  Emma Rose
+                  Phaneendra Reddy
                 </h2>
               </div>
               
               {/* Subtitle */}
               <p className="mt-3 text-sm md:text-base text-muted-foreground">
-                The Designer
+                Visual Designer · Hyderabad, India
               </p>
             </div>
           </div>

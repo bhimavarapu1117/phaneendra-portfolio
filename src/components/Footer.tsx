@@ -18,10 +18,10 @@ const Footer = () => {
           {/* Logo & Description */}
           <div className="space-y-6">
             <h3 className="text-2xl font-light tracking-tight text-foreground">
-              emma rose
+              phaneendra reddy
             </h3>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-              A premium portfolio template crafted for designers, artists, and creative professionals who want to showcase their work beautifully.
+              Visual designer based in Hyderabad, crafting brand identity, motion graphics, e-learning, and infographic experiences.
             </p>
           </div>
 
@@ -121,7 +121,7 @@ const Footer = () => {
 
             {/* Copyright */}
             <p className="text-xs text-muted-foreground">
-              © {new Date().getFullYear()} emma rose template. All rights reserved.
+              © {new Date().getFullYear()} Phaneendra Reddy. All rights reserved.
             </p>
           </div>
         </div>

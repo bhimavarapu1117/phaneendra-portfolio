@@ -5,19 +5,19 @@ import { Button } from "@/components/ui/button";
 
 const experiences = [
   {
-    years: "2023–now",
-    role: "Freelance Designer",
-    company: "Independent"
+    years: "2024–now",
+    role: "Senior Graphic Designer",
+    company: "Cognizant"
   },
   {
-    years: "2020–2023",
-    role: "Lead Visual Designer",
-    company: "Oversight"
+    years: "2022–2024",
+    role: "Visual Designer",
+    company: "Cognizant"
   },
   {
-    years: "2017–2020",
-    role: "Brand Designer",
-    company: "Lovable"
+    years: "2018–2022",
+    role: "Bachelor of Visual Art",
+    company: "Bangalore Univ."
   }
 ];
 
@@ -29,7 +29,7 @@ const SecretStuffSection = () => {
         <div className="mb-[30px]">
           <span className="text-sm text-muted-foreground font-mono">[ Secret Stuff ]</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-foreground mt-4 max-w-4xl leading-tight">
-            The numbers behind the scenes—experience, milestones, and kind words from amazing clients.
+            The numbers behind the scenes—3+ years of experience, e-learning modules, and brand campaigns delivered.
           </h2>
         </div>
 
@@ -61,7 +61,7 @@ const SecretStuffSection = () => {
             
             {/* Centered content */}
             <div className="relative z-10 flex-1 flex-col flex items-center justify-start py-[100px]">
-              <span className="text-sm text-primary/80 mb-2">Clients</span>
+              <span className="text-sm text-primary/80 mb-2">Years of Experience</span>
               <span 
                 className="text-[100px] font-bold" 
                 style={{
@@ -71,7 +71,7 @@ const SecretStuffSection = () => {
                   backgroundClip: 'text'
                 }}
               >
-                250+
+                3+
               </span>
             </div>
             
@@ -98,10 +98,10 @@ const SecretStuffSection = () => {
             {/* Quote */}
             <div className="mt-auto">
               <p className="text-2xl md:text-3xl lg:text-2xl font-normal text-primary leading-relaxed mb-6 xl:text-2xl">
-                "Emma transformed our brand vision into stunning 3D visuals that exceeded every expectation. Her attention to detail is unmatched."
+                "Phaneendra brings clarity and craft to every visual—turning complex ideas into clean, on-brand designs that connect with people."
               </p>
               <p className="text-sm text-foreground/60">
-                Sarah Chen – Creative Director, Lumina Studios
+                Cognizant – Visual Design Team
               </p>
             </div>
           </div>

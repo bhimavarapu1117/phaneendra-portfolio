@@ -14,7 +14,7 @@ const HeroSection = () => {
         {/* Left: Name */}
         <div className="flex-1">
           <h1 className="text-6xl sm:text-8xl leading-[0.9] tracking-tight text-foreground font-semibold md:text-9xl">
-            Emma<br />Rose
+            Phaneendra<br />Reddy
           </h1>
         </div>
         
@@ -23,7 +23,7 @@ const HeroSection = () => {
           <p className="text-2xl sm:text-4xl md:text-[50px] font-medium text-foreground" style={{
           letterSpacing: '-0.05em'
         }}>
-            [ 3D Designer ]
+            [ Visual Designer ]
           </p>
         </div>
       </div>

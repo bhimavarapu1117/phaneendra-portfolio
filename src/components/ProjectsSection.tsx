@@ -113,8 +113,8 @@ const ProjectsSection = () => {
           [ Projects ]
         </span>
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed max-w-4xl text-foreground">
-          A curated collection of 3D renders, brand visuals, and creative
-          experiments that push the boundaries of design.
+          A curated selection of visual design, motion graphics, infographics, and
+          brand work—from awareness campaigns to iconography systems.
         </h2>
       </div>
 
