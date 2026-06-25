@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "asset_id": "d35636e4-44f2-4750-aadd-ac466301533b",
+  "asset_id": "5f0c864d-6c18-4713-9f51-07a1638c7787",
   "project_id": "a3977fce-05ed-4453-9a31-62134e7ec256",
-  "url": "/__l5e/assets-v1/d35636e4-44f2-4750-aadd-ac466301533b/portrait-bg.webp",
-  "r2_key": "a/v1/a3977fce-05ed-4453-9a31-62134e7ec256/d35636e4-44f2-4750-aadd-ac466301533b/portrait-bg.webp",
+  "url": "/__l5e/assets-v1/5f0c864d-6c18-4713-9f51-07a1638c7787/portrait-bg.webp",
+  "r2_key": "a/v1/a3977fce-05ed-4453-9a31-62134e7ec256/5f0c864d-6c18-4713-9f51-07a1638c7787/portrait-bg.webp",
   "original_filename": "portrait-bg.webp",
-  "size": 604524,
-  "content_type": "image/png",
-  "created_at": "2026-06-25T17:28:05Z"
+  "size": 350078,
+  "content_type": "image/webp",
+  "created_at": "2026-06-25T19:35:20Z"
 }
