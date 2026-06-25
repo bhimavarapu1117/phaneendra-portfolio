@@ -3,13 +3,32 @@ import videoAsset from "@/assets/hero-bg.mp4.asset.json";
 
 const HeroBackground = () => {
   const [progress, setProgress] = useState(0); // 0 = fully visible, 1 = gone
+  const [shouldLoad, setShouldLoad] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const durationRef = useRef(0);
+
+  // Lazy-load: only attach src when hero is near the viewport
+  useEffect(() => {
+    const check = () => {
+      const vh = window.innerHeight || 1;
+      // Load when within 1.5 viewports of the top (covers hero area)
+      if (window.scrollY < vh * 1.5) {
+        setShouldLoad(true);
+      }
+    };
+    check();
+    if (shouldLoad) return;
+    window.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", check);
+    return () => {
+      window.removeEventListener("scroll", check);
+      window.removeEventListener("resize", check);
+    };
+  }, [shouldLoad]);
 
   useEffect(() => {
     const update = () => {
       const vh = window.innerHeight || 1;
-      // Scroll across 2x viewport height so the video scrubs through fully before fade ends
       const scrubRange = vh * 2;
       const p = Math.min(1, Math.max(0, window.scrollY / scrubRange));
       setProgress(p);
@@ -30,7 +49,6 @@ const HeroBackground = () => {
     };
   }, []);
 
-  // Fade only during the last 40% of scrub
   const fade = Math.max(0, (progress - 0.6) / 0.4);
   const opacity = 1 - fade;
   const scale = 1 - fade * 0.08;
@@ -43,17 +61,19 @@ const HeroBackground = () => {
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-background"
       style={{ opacity, transform: `scale(${scale})`, transition: "transform 120ms linear" }}
     >
-      <video
-        ref={videoRef}
-        src={videoAsset.url}
-        className="h-full w-full object-cover"
-        muted
-        playsInline
-        preload="auto"
-        onLoadedMetadata={(e) => {
-          durationRef.current = e.currentTarget.duration || 0;
-        }}
-      />
+      {shouldLoad && (
+        <video
+          ref={videoRef}
+          src={videoAsset.url}
+          className="h-full w-full object-contain"
+          muted
+          playsInline
+          preload="auto"
+          onLoadedMetadata={(e) => {
+            durationRef.current = e.currentTarget.duration || 0;
+          }}
+        />
+      )}
       <div className="absolute inset-0 bg-background/40" />
     </div>
   );
