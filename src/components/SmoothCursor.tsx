@@ -58,7 +58,7 @@ const SmoothCursor = () => {
 
   return (
     <>
-      <style>{`* { cursor: none !important; }`}</style>
+      <style>{`html, body, *, *::before, *::after { cursor: none !important; }`}</style>
       <div
         ref={ringRef}
         aria-hidden
@@ -68,12 +68,12 @@ const SmoothCursor = () => {
           left: 0,
           width: 34,
           height: 34,
-          border: `1px solid ${ringColor}`,
+          border: `1.5px solid ${ringColor}`,
           background: ringBg,
           pointerEvents: "none",
           zIndex: 2147483647,
           transition: "background-color 150ms ease, border-color 200ms ease",
-          mixBlendMode: "difference" as const,
+          willChange: "transform",
         }}
       />
       <div
@@ -88,7 +88,8 @@ const SmoothCursor = () => {
           background: dotColor,
           pointerEvents: "none",
           zIndex: 2147483647,
-          mixBlendMode: "difference" as const,
+          willChange: "transform",
+          boxShadow: isLight ? "0 0 0 1px rgba(255,255,255,0.6)" : "0 0 0 1px rgba(0,0,0,0.6)",
         }}
       />
     </>
