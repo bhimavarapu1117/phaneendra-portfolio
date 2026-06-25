@@ -1,5 +1,6 @@
 import HeroSection from "@/components/HeroSection";
 import HeroBackground from "@/components/HeroBackground";
+import ScrollDebugOverlay from "@/components/ScrollDebugOverlay";
 import AboutSection from "@/components/AboutSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import TimelineSection from "@/components/TimelineSection";
@@ -11,6 +12,7 @@ const Index = () => {
   return (
     <main className="relative">
       <HeroBackground />
+      <ScrollDebugOverlay />
       <HeroSection />
       <AboutSection />
       <ProjectsSection />
