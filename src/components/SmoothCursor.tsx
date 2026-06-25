@@ -32,6 +32,7 @@ const SmoothCursor = () => {
   const lastSpawnRef = useRef(0);
   const isMovingRef = useRef(false);
   const idleTimerRef = useRef<number | null>(null);
+  const lastPosRef = useRef({ x: -100, y: -100 });
 
   useEffect(() => {
     const isTouch = window.matchMedia("(pointer: coarse)").matches;
