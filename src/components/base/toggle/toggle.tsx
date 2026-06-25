@@ -19,7 +19,7 @@ export const Toggle = ({ className }: ToggleProps) => {
     return (
       <div
         className={cn(
-          "relative z-[60] flex h-10 w-10 items-center justify-center border border-border",
+          "relative z-[60] flex h-10 w-10 items-center justify-center",
           className
         )}
         aria-hidden="true"
@@ -35,7 +35,7 @@ export const Toggle = ({ className }: ToggleProps) => {
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       className={cn(
-        "relative z-[60] flex h-10 w-10 items-center justify-center border border-border text-foreground transition-colors hover:bg-muted/20",
+        "relative z-[60] flex h-10 w-10 items-center justify-center text-foreground transition-colors hover:bg-muted/20",
         className
       )}
     >
