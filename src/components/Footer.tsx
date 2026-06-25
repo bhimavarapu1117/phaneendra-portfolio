@@ -121,7 +121,7 @@ const Footer = () => {
 
             {/* Copyright */}
             <p className="text-xs text-muted-foreground">
-              © {new Date().getFullYear()} emma rose template. All rights reserved.
+              © {new Date().getFullYear()} Phaneendra Reddy. All rights reserved.
             </p>
           </div>
         </div>
