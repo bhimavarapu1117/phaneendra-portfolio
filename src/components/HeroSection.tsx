@@ -2,7 +2,7 @@ import Navbar from "./Navbar";
 import ProjectCarousel from "./ProjectCarousel";
 import backgroundLines from "@/assets/background-lines.svg";
 const HeroSection = () => {
-  return <section className="relative h-screen w-full overflow-hidden bg-card">
+  return <section className="relative h-screen w-full overflow-hidden bg-transparent">
       {/* Background decorative lines */}
       <img src={backgroundLines} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none" />
       
