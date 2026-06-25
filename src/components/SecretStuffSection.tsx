@@ -14,11 +14,6 @@ const experiences = [
     role: "Visual Designer",
     company: "Cognizant"
   },
-  {
-    years: "2018–2022",
-    role: "Bachelor of Visual Art",
-    company: "Bangalore Univ."
-  }
 ];
 
 const SecretStuffSection = () => {
