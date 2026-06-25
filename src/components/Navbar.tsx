@@ -176,8 +176,8 @@ const Navbar = () => {
             : "opacity-0 pointer-events-none"
         }`}
       >
-        {/* Blurred Background */}
-        <div className="absolute inset-0 bg-background/90 backdrop-blur-md" />
+        {/* Liquid Glass Background */}
+        <div className="absolute inset-0 glass-liquid" />
         
         {/* Menu Content */}
         <div className="relative h-full flex flex-col justify-between px-8 py-24 md:px-16">
@@ -190,11 +190,7 @@ const Navbar = () => {
                   key={link.label}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link)}
-                  className={`text-4xl md:text-6xl lg:text-7xl transition-all duration-500 ${
-                    isActive 
-                      ? "font-medium text-foreground" 
-                      : "font-light text-muted-foreground/60 hover:text-muted-foreground"
-                  } ${
+                  className={`group relative px-4 py-2 md:px-6 md:py-3 text-4xl md:text-6xl lg:text-7xl transition-all duration-500 ${
                     isMenuOpen 
                       ? "opacity-100 translate-x-0" 
                       : "opacity-0 translate-x-8"
@@ -203,14 +199,21 @@ const Navbar = () => {
                     transitionDelay: isMenuOpen ? `${150 + index * 100}ms` : "0ms" 
                   }}
                 >
-                  {link.label}
+                  <span className="glass-surface absolute inset-0" />
+                  <span className={`relative z-10 ${
+                    isActive 
+                      ? "font-medium text-foreground" 
+                      : "font-light text-muted-foreground/80 group-hover:text-foreground"
+                  }`}>
+                    {link.label}
+                  </span>
                 </a>
               );
             })}
           </nav>
           
           {/* Social Links - Bottom Left */}
-          <div className="flex flex-wrap gap-4 md:gap-6">
+          <div className="flex flex-wrap gap-3 md:gap-4">
             {socialLinks.map((link, index) => (
               <a
                 key={link.label}
@@ -218,7 +221,7 @@ const Navbar = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleSocialClick}
-                className={`text-sm md:text-base text-muted-foreground hover:text-foreground transition-all duration-500 ${
+                className={`group relative px-3 py-2 text-sm md:text-base text-muted-foreground hover:text-foreground transition-all duration-500 ${
                   isMenuOpen 
                     ? "opacity-100 translate-y-0" 
                     : "opacity-0 translate-y-4"
@@ -227,7 +230,8 @@ const Navbar = () => {
                   transitionDelay: isMenuOpen ? `${400 + index * 75}ms` : "0ms" 
                 }}
               >
-                [ {link.label} ]
+                <span className="glass-surface absolute inset-0" />
+                <span className="relative z-10">[ {link.label} ]</span>
               </a>
             ))}
           </div>
