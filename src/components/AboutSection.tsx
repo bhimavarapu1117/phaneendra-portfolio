@@ -141,9 +141,9 @@ const AboutSection = () => {
             [ About Me ]
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium text-foreground/90 max-w-3xl leading-tight lg:text-3xl">
-            Bringing imagination to life
+            Visual storytelling that connects
             <span className="text-muted-foreground">
-              —crafting immersive 3D worlds that evoke emotion.
+              —crafting brand identity, motion, and e-learning experiences that move people.
             </span>
           </h2>
         </div>
