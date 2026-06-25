@@ -5,6 +5,8 @@ type Sparkle = {
   id: number;
   x: number;
   y: number;
+  vx: number;
+  vy: number;
   size: number;
   rotation: number;
   life: number;
@@ -13,8 +15,8 @@ type Sparkle = {
 
 /**
  * Smooth "magic" cursor — a small dot follows the pointer instantly while
- * a larger ring trails it with eased interpolation. Tiny sparkles emit only
- * while the cursor is actively moving and fade out quickly when it stops.
+ * a larger ring trails it with eased interpolation. Tiny sparkles trail behind
+ * the cursor as it moves, drift through the air, and fade out slowly.
  * Theme-aware for visibility. Disabled on touch.
  */
 const SmoothCursor = () => {
@@ -30,6 +32,7 @@ const SmoothCursor = () => {
   const lastSpawnRef = useRef(0);
   const isMovingRef = useRef(false);
   const idleTimerRef = useRef<number | null>(null);
+  const lastPosRef = useRef({ x: -100, y: -100 });
 
   useEffect(() => {
     const isTouch = window.matchMedia("(pointer: coarse)").matches;
@@ -47,6 +50,11 @@ const SmoothCursor = () => {
       isMovingRef.current = true;
       setIdle();
 
+      const dx = e.clientX - lastPosRef.current.x;
+      const dy = e.clientY - lastPosRef.current.y;
+      lastPosRef.current.x = e.clientX;
+      lastPosRef.current.y = e.clientY;
+
       target.current.x = e.clientX;
       target.current.y = e.clientY;
       if (dotRef.current) {
@@ -56,9 +64,9 @@ const SmoothCursor = () => {
       const interactive = !!el?.closest('a, button, [role="button"], input, textarea, select, label, [data-cursor="hover"]');
       setHovering(interactive);
 
-      // Spawn sparkle trail only while actively moving; each sparkle lives ~220-300ms
+      // Spawn sparkle trail only while actively moving; each sparkle lives ~600-900ms
       const now = performance.now();
-      if (now - lastSpawnRef.current > 28) {
+      if (now - lastSpawnRef.current > 22) {
         lastSpawnRef.current = now;
         const id = sparkleIdRef.current++;
         const size = Math.random() * 2 + 2;
@@ -66,8 +74,16 @@ const SmoothCursor = () => {
         const offset = 6;
         const x = e.clientX + (Math.random() - 0.5) * offset;
         const y = e.clientY + (Math.random() - 0.5) * offset;
-        const maxLife = Math.random() * 80 + 220;
-        setSparkles((prev) => [...prev, { id, x, y, size, rotation, life: maxLife, maxLife }]);
+        const maxLife = Math.random() * 300 + 600;
+
+        // Trail behind cursor movement with a little outward spread
+        const speed = Math.hypot(dx, dy);
+        const angle = Math.atan2(dy, dx) + Math.PI; // opposite direction
+        const drift = Math.random() * 0.8 + 0.4;
+        const vx = Math.cos(angle) * speed * drift * 0.12 + (Math.random() - 0.5) * 0.5;
+        const vy = Math.sin(angle) * speed * drift * 0.12 + (Math.random() - 0.5) * 0.5;
+
+        setSparkles((prev) => [...prev, { id, x, y, vx, vy, size, rotation, life: maxLife, maxLife }]);
       }
     };
 
@@ -81,7 +97,15 @@ const SmoothCursor = () => {
 
       setSparkles((prev) => {
         const updated = prev
-          .map((s) => ({ ...s, life: s.life - 16 }))
+          .map((s) => ({
+            ...s,
+            x: s.x + s.vx,
+            y: s.y + s.vy,
+            vx: s.vx * 0.96,
+            vy: s.vy * 0.96,
+            rotation: s.rotation + 2,
+            life: s.life - 16,
+          }))
           .filter((s) => s.life > 0);
         return updated.length === prev.length ? prev : updated;
       });
