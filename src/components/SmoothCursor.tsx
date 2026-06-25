@@ -68,6 +68,7 @@ const SmoothCursor = () => {
           left: 0,
           width: 34,
           height: 34,
+          borderRadius: "50%",
           border: `1.5px solid ${ringColor}`,
           background: ringBg,
           pointerEvents: "none",
