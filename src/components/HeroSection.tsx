@@ -11,12 +11,6 @@ const HeroSection = () => {
       
       {/* Main content */}
       <div className="relative z-10 h-full flex flex-col md:flex-row items-start md:items-end justify-between px-8 md:px-16 pt-32 md:pt-40 pb-24 md:pb-32">
-        {/* Left: Name */}
-        <div className="flex-1">
-          <h1 className="text-6xl sm:text-8xl leading-[0.9] tracking-tight text-foreground font-semibold md:text-9xl">
-            Phaneendra<br />Reddy
-          </h1>
-        </div>
         
         {/* Right: Role */}
         <div className="flex-1 flex justify-end mt-8 md:mt-0">
