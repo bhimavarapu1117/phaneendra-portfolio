@@ -1,23 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 
-type Sparkle = {
-  id: number;
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  size: number;
-  rotation: number;
-  life: number;
-  maxLife: number;
-};
-
 /**
- * Smooth "magic" cursor — a small dot follows the pointer instantly while
- * a larger ring trails it with eased interpolation. Tiny sparkles trail behind
- * the cursor as it moves, drift through the air, and fade out slowly.
- * Theme-aware for visibility. Disabled on touch.
+ * Smooth cursor — a small dot follows the pointer instantly while a larger
+ * ring trails it with eased interpolation. Theme-aware for visibility.
+ * Disabled on touch.
  */
 const SmoothCursor = () => {
   const { resolvedTheme } = useTheme();
@@ -27,12 +14,7 @@ const SmoothCursor = () => {
   const ring = useRef({ x: -100, y: -100 });
   const [enabled, setEnabled] = useState(false);
   const [hovering, setHovering] = useState(false);
-  const [sparkles, setSparkles] = useState<Sparkle[]>([]);
-  const sparkleIdRef = useRef(0);
-  const lastSpawnRef = useRef(0);
-  const isMovingRef = useRef(false);
   const idleTimerRef = useRef<number | null>(null);
-  const lastPosRef = useRef({ x: -100, y: -100 });
 
   useEffect(() => {
     const isTouch = window.matchMedia("(pointer: coarse)").matches;
@@ -41,13 +23,10 @@ const SmoothCursor = () => {
 
     const setIdle = () => {
       if (idleTimerRef.current) window.clearTimeout(idleTimerRef.current);
-      idleTimerRef.current = window.setTimeout(() => {
-        isMovingRef.current = false;
-      }, 60);
+      idleTimerRef.current = window.setTimeout(() => {}, 60);
     };
 
     const onMove = (e: MouseEvent) => {
-      isMovingRef.current = true;
       setIdle();
 
       const dx = e.clientX - lastPosRef.current.x;
