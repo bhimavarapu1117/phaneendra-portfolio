@@ -27,7 +27,7 @@ const SecretStuffSection = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-[30px]">
-          <span className="text-sm text-muted-foreground font-mono">[ Secret Stuff ]</span>
+          <span className="text-sm text-muted-foreground font-mono"></span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-foreground mt-4 max-w-4xl leading-tight">
             Creative Visual Designer with 3+ years of experience in brand identity, digital design, and user-centered solutions, leveraging AI tools to create impactful visual experiences.
           </h2>
