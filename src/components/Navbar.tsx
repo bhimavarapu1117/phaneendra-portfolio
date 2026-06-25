@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { Toggle } from "@/components/base/toggle/toggle";
+
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -143,24 +145,28 @@ const Navbar = () => {
           </a>
         </div>
         
-        {/* Menu Toggle Button */}
-        <button 
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="relative z-[60] flex flex-col items-center justify-center w-10 h-10 hover:opacity-70 transition-opacity"
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-        >
-          <span 
-            className={`block w-8 h-0.5 bg-foreground transition-all duration-300 ${
-              isMenuOpen ? "rotate-45 translate-y-0.5" : ""
-            }`}
-          />
-          <span 
-            className={`block w-6 h-0.5 bg-foreground transition-all duration-300 mt-1.5 ${
-              isMenuOpen ? "-rotate-45 -translate-y-1.5 w-8" : ""
-            }`}
-          />
-        </button>
+        {/* Theme + Menu Toggle Buttons */}
+        <div className="relative z-[60] flex items-center gap-3">
+          <Toggle />
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="relative flex flex-col items-center justify-center w-10 h-10 hover:opacity-70 transition-opacity"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          >
+            <span
+              className={`block w-8 h-0.5 bg-foreground transition-all duration-300 ${
+                isMenuOpen ? "rotate-45 translate-y-0.5" : ""
+              }`}
+            />
+            <span
+              className={`block w-6 h-0.5 bg-foreground transition-all duration-300 mt-1.5 ${
+                isMenuOpen ? "-rotate-45 -translate-y-1.5 w-8" : ""
+              }`}
+            />
+          </button>
+        </div>
       </nav>
+
 
       {/* Fullscreen Menu Overlay */}
       <div 
