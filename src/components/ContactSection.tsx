@@ -84,13 +84,13 @@ const ContactSection = () => {
                 
                 {/* Name Text */}
                 <h2 className="text-3xl md:text-5xl lg:text-6xl font-medium text-foreground whitespace-nowrap">
-                  Emma Rose
+                  Phaneendra Reddy
                 </h2>
               </div>
               
               {/* Subtitle */}
               <p className="mt-3 text-sm md:text-base text-muted-foreground">
-                The Designer
+                Visual Designer · Hyderabad, India
               </p>
             </div>
           </div>
