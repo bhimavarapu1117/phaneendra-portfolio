@@ -147,10 +147,10 @@ const Navbar = () => {
         
         {/* Theme + Menu Toggle Buttons */}
         <div className="relative z-[60] flex items-center gap-3">
-          <Toggle />
+          <Toggle className="glass-surface" />
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="relative flex flex-col items-center justify-center w-10 h-10 hover:opacity-70 transition-opacity"
+            className="relative flex flex-col items-center justify-center w-10 h-10 glass-surface hover:opacity-70 transition-opacity"
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             <span
