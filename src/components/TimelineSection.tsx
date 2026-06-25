@@ -103,7 +103,7 @@ const TimelineSection = () => {
                 : "opacity-0 translate-y-6"
             }`}
           >
-            From concept to final render—my streamlined process ensures every project is delivered with precision and care.
+            From visual art foundations to senior design—my journey through education and craft.
           </h2>
         </div>
 
