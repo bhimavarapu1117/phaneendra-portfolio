@@ -1,4 +1,5 @@
 import HeroSection from "@/components/HeroSection";
+import HeroBackground from "@/components/HeroBackground";
 import AboutSection from "@/components/AboutSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import TimelineSection from "@/components/TimelineSection";
@@ -8,7 +9,8 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <main>
+    <main className="relative">
+      <HeroBackground />
       <HeroSection />
       <AboutSection />
       <ProjectsSection />
