@@ -19,7 +19,7 @@ export const Toggle = ({ className }: ToggleProps) => {
     return (
       <div
         className={cn(
-          "relative z-[60] flex h-10 w-10 items-center justify-center border border-border",
+          "relative z-[60] flex h-10 w-10 items-center justify-center",
           className
         )}
         aria-hidden="true"
