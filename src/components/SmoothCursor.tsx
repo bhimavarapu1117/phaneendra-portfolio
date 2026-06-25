@@ -5,6 +5,8 @@ type Sparkle = {
   id: number;
   x: number;
   y: number;
+  vx: number;
+  vy: number;
   size: number;
   rotation: number;
   life: number;
@@ -13,8 +15,8 @@ type Sparkle = {
 
 /**
  * Smooth "magic" cursor — a small dot follows the pointer instantly while
- * a larger ring trails it with eased interpolation. Tiny sparkles emit only
- * while the cursor is actively moving and fade out quickly when it stops.
+ * a larger ring trails it with eased interpolation. Tiny sparkles trail behind
+ * the cursor as it moves, drift through the air, and fade out slowly.
  * Theme-aware for visibility. Disabled on touch.
  */
 const SmoothCursor = () => {
