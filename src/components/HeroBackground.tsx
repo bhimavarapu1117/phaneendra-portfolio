@@ -1,12 +1,16 @@
 import { useEffect, useRef, useState } from "react";
+import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils";
 import videoAsset from "@/assets/hero-bg.mp4.asset.json";
 
 const HeroBackground = () => {
+  const { resolvedTheme } = useTheme();
   const [progress, setProgress] = useState(0); // 0 = fully visible, 1 = gone
   const [shouldLoad, setShouldLoad] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const durationRef = useRef(0);
   const aboutTopRef = useRef(0);
+  const isLight = resolvedTheme === "light";
 
   // Lazy-load: only attach src when hero is near the viewport
   useEffect(() => {
@@ -76,7 +80,10 @@ const HeroBackground = () => {
         <video
           ref={videoRef}
           src={videoAsset.url}
-          className="h-full w-full object-contain"
+          className={cn(
+            "h-full w-full object-contain transition-[filter,opacity] duration-300",
+            isLight && "mix-blend-multiply brightness-125 contrast-110"
+          )}
           muted
           playsInline
           preload="auto"
