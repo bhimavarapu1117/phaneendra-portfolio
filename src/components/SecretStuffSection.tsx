@@ -29,7 +29,7 @@ const SecretStuffSection = () => {
         <div className="mb-[30px]">
           <span className="text-sm text-muted-foreground font-mono">[ Secret Stuff ]</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-foreground mt-4 max-w-4xl leading-tight">
-            The numbers behind the scenes—experience, milestones, and kind words from amazing clients.
+            The numbers behind the scenes—3+ years of experience, e-learning modules, and brand campaigns delivered.
           </h2>
         </div>
 
