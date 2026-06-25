@@ -15,15 +15,6 @@ const Footer = () => {
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-          {/* Logo & Description */}
-          <div className="space-y-6">
-            <h3 className="text-2xl font-light tracking-tight text-foreground">
-              phaneendra reddy
-            </h3>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-              Visual designer based in Hyderabad, crafting brand identity, motion graphics, e-learning, and infographic experiences.
-            </p>
-          </div>
 
           {/* Quick Links */}
           <div className="space-y-6">
