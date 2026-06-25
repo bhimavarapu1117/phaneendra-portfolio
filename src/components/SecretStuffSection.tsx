@@ -5,19 +5,19 @@ import { Button } from "@/components/ui/button";
 
 const experiences = [
   {
-    years: "2023–now",
-    role: "Freelance Designer",
-    company: "Independent"
+    years: "2024–now",
+    role: "Senior Graphic Designer",
+    company: "Cognizant"
   },
   {
-    years: "2020–2023",
-    role: "Lead Visual Designer",
-    company: "Oversight"
+    years: "2022–2024",
+    role: "Visual Designer",
+    company: "Cognizant"
   },
   {
-    years: "2017–2020",
-    role: "Brand Designer",
-    company: "Lovable"
+    years: "2018–2022",
+    role: "Bachelor of Visual Art",
+    company: "Bangalore Univ."
   }
 ];
 
