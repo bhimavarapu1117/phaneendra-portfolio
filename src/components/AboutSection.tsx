@@ -143,7 +143,7 @@ const AboutSection = () => {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium text-foreground/90 max-w-3xl leading-tight lg:text-3xl">
             &nbsp;Passionate about product design, creativity, and AI-driven innovation.
             <span className="text-muted-foreground block mt-2 text-lg md:text-xl">
-              Visual Designer with 3+ years of experience crafting intuitive digital experiences, impactful brand identities, and user-centered designs.
+              Visual Designer with 3+ years of experience crafting intuitive digital experiences, impactful brand identities.
             </span>
           </h2>
         </div>
