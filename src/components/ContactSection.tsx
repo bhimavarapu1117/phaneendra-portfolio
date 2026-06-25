@@ -3,10 +3,10 @@ import contactBg from "@/assets/contact-bg.jpg";
 
 const ContactSection = () => {
   const navLinks = [
-    { label: "Email", href: "mailto:hello@emmarose.design" },
-    { label: "Call me", href: "tel:+15551234567" },
-    { label: "Instagram", href: "https://instagram.com/emmarose" },
-    { label: "Twitter", href: "https://twitter.com/emmarose" },
+    { label: "Email", href: "mailto:phaneendrareddy.design@gmail.com" },
+    { label: "Location", href: "#" },
+    { label: "Instagram", href: "https://instagram.com/" },
+    { label: "LinkedIn", href: "https://linkedin.com/" },
   ];
 
   return (
