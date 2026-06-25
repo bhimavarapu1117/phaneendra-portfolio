@@ -80,7 +80,10 @@ const HeroBackground = () => {
         <video
           ref={videoRef}
           src={videoAsset.url}
-          className="h-full w-full object-contain"
+          className={cn(
+            "h-full w-full object-contain transition-all duration-300",
+            isLight && "mix-blend-multiply brightness-110 contrast-110"
+          )}
           muted
           playsInline
           preload="auto"
