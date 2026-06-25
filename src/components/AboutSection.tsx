@@ -12,7 +12,7 @@ const cards = [
   { id: 1, image: aboutPhoto1, showCaption: false },
   { id: 2, image: aboutPhoto2, showCaption: false },
   { id: 3, image: aboutPhoto3, showCaption: false },
-  { id: 4, image: aboutPhoto4, showCaption: true, name: "Emma Rose", subtitle: "The 3D Artist" },
+  { id: 4, image: aboutPhoto4, showCaption: true, name: "Phaneendra Reddy", subtitle: "The Visual Designer" },
 ];
 
 // Helper to interpolate between two values
