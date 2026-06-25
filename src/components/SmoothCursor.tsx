@@ -56,7 +56,7 @@ const SmoothCursor = () => {
       const interactive = !!el?.closest('a, button, [role="button"], input, textarea, select, label, [data-cursor="hover"]');
       setHovering(interactive);
 
-      // Spawn sparkle trail only while actively moving
+      // Spawn sparkle trail only while actively moving; each sparkle lives ~220-300ms
       const now = performance.now();
       if (now - lastSpawnRef.current > 28) {
         lastSpawnRef.current = now;
@@ -66,7 +66,7 @@ const SmoothCursor = () => {
         const offset = 6;
         const x = e.clientX + (Math.random() - 0.5) * offset;
         const y = e.clientY + (Math.random() - 0.5) * offset;
-        const maxLife = Math.random() * 100 + 120;
+        const maxLife = Math.random() * 80 + 220;
         setSparkles((prev) => [...prev, { id, x, y, size, rotation, life: maxLife, maxLife }]);
       }
     };
