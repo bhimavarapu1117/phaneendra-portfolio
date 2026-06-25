@@ -10,7 +10,7 @@ const HeroSection = () => {
       <Navbar />
       
       {/* Main content */}
-      <div className="relative z-10 h-full flex flex-col md:flex-row items-start md:items-end justify-between px-8 md:px-16 pt-32 md:pt-0 pb-[625px] md:pb-[465px]">
+      <div className="relative z-10 h-full flex flex-col md:flex-row items-start md:items-end justify-between px-8 md:px-16 pt-32 md:pt-40 pb-[625px] md:pb-[360px]">
         {/* Left: Name */}
         <div className="flex-1">
           <h1 className="text-6xl sm:text-8xl leading-[0.9] tracking-tight text-foreground font-semibold md:text-9xl">
