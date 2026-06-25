@@ -12,6 +12,7 @@ const Index = () => {
   return (
     <main className="relative">
       <HeroBackground />
+      <ScrollDebugOverlay />
       <HeroSection />
       <AboutSection />
       <ProjectsSection />
