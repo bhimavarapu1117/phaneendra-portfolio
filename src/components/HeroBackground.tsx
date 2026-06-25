@@ -1,15 +1,25 @@
-import { useEffect, useState } from "react";
-import bgAsset from "@/assets/portrait-bg.webp.asset.json";
+import { useEffect, useRef, useState } from "react";
+import videoAsset from "@/assets/hero-bg.mp4.asset.json";
 
 const HeroBackground = () => {
   const [progress, setProgress] = useState(0); // 0 = fully visible, 1 = gone
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const durationRef = useRef(0);
 
   useEffect(() => {
     const update = () => {
       const vh = window.innerHeight || 1;
-      // Fade out across the first viewport height (hero is 100vh)
-      const p = Math.min(1, Math.max(0, window.scrollY / vh));
+      // Scroll across 2x viewport height so the video scrubs through fully before fade ends
+      const scrubRange = vh * 2;
+      const p = Math.min(1, Math.max(0, window.scrollY / scrubRange));
       setProgress(p);
+
+      const v = videoRef.current;
+      const d = durationRef.current;
+      if (v && d > 0) {
+        const t = Math.min(d - 0.05, p * d);
+        if (Math.abs(v.currentTime - t) > 0.03) v.currentTime = t;
+      }
     };
     update();
     window.addEventListener("scroll", update, { passive: true });
@@ -20,10 +30,11 @@ const HeroBackground = () => {
     };
   }, []);
 
-  const opacity = 1 - progress;
-  const scale = 1 - progress * 0.08; // subtle zoom-out
+  // Fade only during the last 40% of scrub
+  const fade = Math.max(0, (progress - 0.6) / 0.4);
+  const opacity = 1 - fade;
+  const scale = 1 - fade * 0.08;
 
-  // Hide entirely once faded to avoid pointer/paint cost
   if (opacity <= 0.01) return null;
 
   return (
@@ -32,14 +43,18 @@ const HeroBackground = () => {
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-background"
       style={{ opacity, transform: `scale(${scale})`, transition: "transform 120ms linear" }}
     >
-      <img
-        src={bgAsset.url}
-        alt=""
+      <video
+        ref={videoRef}
+        src={videoAsset.url}
         className="h-full w-full object-cover"
-        draggable={false}
+        muted
+        playsInline
+        preload="auto"
+        onLoadedMetadata={(e) => {
+          durationRef.current = e.currentTarget.duration || 0;
+        }}
       />
-      {/* Subtle dark overlay so hero text stays readable */}
-      <div className="absolute inset-0 bg-background/55" />
+      <div className="absolute inset-0 bg-background/40" />
     </div>
   );
 };
