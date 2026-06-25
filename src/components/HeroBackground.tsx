@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils";
 import videoAsset from "@/assets/hero-bg.mp4.asset.json";
 
 const HeroBackground = () => {
