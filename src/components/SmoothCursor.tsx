@@ -13,8 +13,9 @@ type Sparkle = {
 
 /**
  * Smooth "magic" cursor — a small dot follows the pointer instantly while
- * a larger ring trails it with eased interpolation. Tiny sparkles trail behind
- * the cursor on movement. Theme-aware for visibility. Disabled on touch.
+ * a larger ring trails it with eased interpolation. Tiny sparkles emit only
+ * while the cursor is actively moving and fade out quickly when it stops.
+ * Theme-aware for visibility. Disabled on touch.
  */
 const SmoothCursor = () => {
   const { resolvedTheme } = useTheme();
@@ -27,13 +28,25 @@ const SmoothCursor = () => {
   const [sparkles, setSparkles] = useState<Sparkle[]>([]);
   const sparkleIdRef = useRef(0);
   const lastSpawnRef = useRef(0);
+  const isMovingRef = useRef(false);
+  const idleTimerRef = useRef<number | null>(null);
 
   useEffect(() => {
     const isTouch = window.matchMedia("(pointer: coarse)").matches;
     if (isTouch) return;
     setEnabled(true);
 
+    const setIdle = () => {
+      if (idleTimerRef.current) window.clearTimeout(idleTimerRef.current);
+      idleTimerRef.current = window.setTimeout(() => {
+        isMovingRef.current = false;
+      }, 60);
+    };
+
     const onMove = (e: MouseEvent) => {
+      isMovingRef.current = true;
+      setIdle();
+
       target.current.x = e.clientX;
       target.current.y = e.clientY;
       if (dotRef.current) {
@@ -43,17 +56,17 @@ const SmoothCursor = () => {
       const interactive = !!el?.closest('a, button, [role="button"], input, textarea, select, label, [data-cursor="hover"]');
       setHovering(interactive);
 
-      // Spawn sparkle trail
+      // Spawn sparkle trail only while actively moving
       const now = performance.now();
-      if (now - lastSpawnRef.current > 35) {
+      if (now - lastSpawnRef.current > 28) {
         lastSpawnRef.current = now;
         const id = sparkleIdRef.current++;
-        const size = Math.random() * 3 + 2;
+        const size = Math.random() * 2 + 2;
         const rotation = Math.random() * 45;
-        const offset = 8;
+        const offset = 6;
         const x = e.clientX + (Math.random() - 0.5) * offset;
         const y = e.clientY + (Math.random() - 0.5) * offset;
-        const maxLife = Math.random() * 300 + 350;
+        const maxLife = Math.random() * 100 + 120;
         setSparkles((prev) => [...prev, { id, x, y, size, rotation, life: maxLife, maxLife }]);
       }
     };
@@ -81,6 +94,7 @@ const SmoothCursor = () => {
     return () => {
       window.removeEventListener("mousemove", onMove);
       cancelAnimationFrame(raf);
+      if (idleTimerRef.current) window.clearTimeout(idleTimerRef.current);
     };
   }, [hovering]);
 
