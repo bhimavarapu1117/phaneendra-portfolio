@@ -1,4 +1,5 @@
-import contactBg from "@/assets/contact-bg.jpg";
+import contactBgAsset from "@/assets/contact-bg.png.asset.json";
+const contactBg = contactBgAsset.url;
 
 const ContactSection = () => {
   return (
