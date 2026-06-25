@@ -12,12 +12,14 @@ import AdminRegister from "./pages/admin/Register";
 import AdminDashboard from "./pages/admin/Dashboard";
 import ProjectForm from "./pages/admin/ProjectForm";
 import AdminRoute from "./components/AdminRoute";
+import SmoothCursor from "./components/SmoothCursor";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <SmoothCursor />
       <Toaster />
       <Sonner />
       <BrowserRouter>
