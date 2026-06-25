@@ -61,7 +61,7 @@ const SecretStuffSection = () => {
             
             {/* Centered content */}
             <div className="relative z-10 flex-1 flex-col flex items-center justify-start py-[100px]">
-              <span className="text-sm text-primary/80 mb-2">Clients</span>
+              <span className="text-sm text-primary/80 mb-2">Years of Experience</span>
               <span 
                 className="text-[100px] font-bold" 
                 style={{
@@ -71,7 +71,7 @@ const SecretStuffSection = () => {
                   backgroundClip: 'text'
                 }}
               >
-                250+
+                3+
               </span>
             </div>
             
