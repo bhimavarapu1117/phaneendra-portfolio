@@ -4,7 +4,7 @@ import contactBg from "@/assets/contact-bg.jpg";
 const ContactSection = () => {
   const navLinks = [
     { label: "Email", href: "mailto:phaneendrareddy.design@gmail.com" },
-    { label: "Location", href: "#" },
+    { label: "Behance", href: "https://www.behance.net/phaneendrareddy" },
     { label: "Instagram", href: "https://instagram.com/" },
     { label: "LinkedIn", href: "https://linkedin.com/" },
   ];
