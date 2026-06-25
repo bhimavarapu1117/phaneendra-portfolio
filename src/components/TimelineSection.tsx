@@ -11,26 +11,26 @@ type TimelineColumn = {
 const timelineColumns: TimelineColumn[] = [
   {
     step: "01",
-    title: "Concept\nProposal",
-    duration: "[ 1 week depending on the size of the design ]",
+    title: "Foundation\nYear",
+    duration: "[ 2018 · Bangalore University ]",
     cardHeight: "h-[280px]"
   },
   {
     step: "02",
-    title: "Full 3D\nDesign",
-    duration: "[ 2–4 weeks ]",
+    title: "Bachelor of\nVisual Art",
+    duration: "[ 2018–2022 · Bangalore University ]",
     cardHeight: "h-[340px]"
   },
   {
     step: "03",
-    title: "Project\nDeliverables",
-    duration: "[ 3 weeks ]",
+    title: "Joined\nCognizant",
+    duration: "[ Sept 2022 · Visual Designer ]",
     cardHeight: "h-[400px]"
   },
   {
     step: "04",
-    title: "Project\nFinals",
-    duration: "[ 1 week depending on the size of the design ]",
+    title: "Senior\nGraphic Designer",
+    duration: "[ 2024–now · 3+ years experience ]",
     cardHeight: "h-[460px]"
   }
 ];
