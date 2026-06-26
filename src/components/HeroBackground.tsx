@@ -81,6 +81,7 @@ const HeroBackground = () => {
           ref={videoRef}
           src={videoAsset.url}
           className={cn(
+            // contain everywhere so the full video plays without cropping on any device
             "h-full w-full object-contain transition-[filter,opacity] duration-300",
             isLight && "mix-blend-multiply brightness-125 contrast-110"
           )}

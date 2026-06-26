@@ -150,7 +150,7 @@ const AboutSection = () => {
 
         {/* Card stack - centered */}
         <div className="flex-1 flex items-center justify-center w-full">
-          <div className="relative w-[280px] md:w-[340px] h-[360px] md:h-[440px]">
+          <div className="relative w-[240px] sm:w-[280px] md:w-[340px] h-[320px] sm:h-[360px] md:h-[440px] max-w-[80vw]">
             {cards.map((card, index) => (
               <div 
                 key={card.id} 

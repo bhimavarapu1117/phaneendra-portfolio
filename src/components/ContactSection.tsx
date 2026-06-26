@@ -5,10 +5,10 @@ const contactBg = contactBgAsset.url;
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="bg-background py-16 md:py-24 px-2 md:px-6">
+    <section id="contact" className="bg-background py-12 sm:py-16 md:py-24 px-3 sm:px-4 md:px-6">
       <div className="max-w-7xl mx-auto flex items-center justify-center">
-        {/* Media Card */}
-        <div className="relative w-[95%] md:w-[90%] aspect-[16/9] md:aspect-[21/9] overflow-hidden border border-border">
+        {/* Media Card — taller on mobile so the 3D lanyard has room to hang */}
+        <div className="relative w-full sm:w-[95%] md:w-[90%] h-[70vh] sm:h-auto sm:aspect-[4/3] md:aspect-[16/9] lg:aspect-[21/9] overflow-hidden border border-border">
           {/* Background Image */}
           <img
             src={contactBg}
@@ -25,11 +25,11 @@ const ContactSection = () => {
           </div>
 
           {/* Name Caption */}
-          <div className="absolute bottom-6 left-0 right-0 z-20 flex flex-col items-center pointer-events-none">
-            <h2 className="text-2xl md:text-4xl font-medium text-foreground whitespace-nowrap">
+          <div className="absolute bottom-4 sm:bottom-6 left-0 right-0 z-20 flex flex-col items-center pointer-events-none px-4">
+            <h2 className="text-xl sm:text-2xl md:text-4xl font-medium text-foreground text-center">
               Phaneendra Reddy
             </h2>
-            <p className="mt-2 text-xs md:text-sm text-muted-foreground">
+            <p className="mt-1.5 sm:mt-2 text-[11px] sm:text-xs md:text-sm text-muted-foreground text-center">
               Visual Designer · Hyderabad, India
             </p>
           </div>
