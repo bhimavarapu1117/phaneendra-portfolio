@@ -100,16 +100,16 @@ const ContactFormSection = () => {
         </div>
 
         {/* Two-column layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 lg:items-stretch">
           {/* Contact info */}
-          <div className="space-y-6">
+          <div className="space-y-6 lg:space-y-0 lg:h-full lg:flex lg:flex-col lg:gap-6">
             {contactInfo.map((item) => {
               const Icon = item.icon;
               return (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="group flex items-start gap-4 p-4 border border-border bg-card/30 hover:bg-card/60 transition-colors"
+                  className="group flex items-center gap-4 p-4 border border-border bg-card/30 hover:bg-card/60 transition-colors lg:flex-1"
                 >
                   <span className="flex items-center justify-center w-10 h-10 border border-border text-muted-foreground group-hover:text-foreground transition-colors">
                     <Icon className="w-4 h-4" />
@@ -126,8 +126,8 @@ const ContactFormSection = () => {
               );
             })}
 
-            <div className="p-4 border border-border bg-card/30">
-              <div className="flex items-start gap-4">
+            <div className="p-4 border border-border bg-card/30 lg:flex-1">
+              <div className="flex items-center gap-4">
                 <span className="flex items-center justify-center w-10 h-10 border border-border text-muted-foreground">
                   <LinkIcon className="w-4 h-4" />
                 </span>
