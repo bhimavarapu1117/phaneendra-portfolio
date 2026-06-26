@@ -112,6 +112,8 @@ function Band({
   imageFit = 'cover',
   lanyardImage = null,
   lanyardWidth = 1,
+  plainLanyard = false,
+  lanyardColor = 'white',
 }: BandProps) {
   const band = useRef<any>(),
     fixed = useRef<any>(),
