@@ -75,6 +75,8 @@ export default function Lanyard({
             imageFit={imageFit}
             lanyardImage={lanyardImage}
             lanyardWidth={lanyardWidth}
+            plainLanyard={plainLanyard}
+            lanyardColor={lanyardColor}
           />
         </Physics>
         <Environment blur={0.75}>
