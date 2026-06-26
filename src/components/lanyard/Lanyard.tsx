@@ -50,18 +50,72 @@ export default function Lanyard({
   plainLanyard = false,
   lanyardColor = 'white',
 }: LanyardProps) {
-  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
+  const [size, setSize] = useState<'mobile' | 'tablet' | 'desktop'>(() => {
+    if (typeof window === 'undefined') return 'desktop';
+    const w = window.innerWidth;
+    if (w < 640) return 'mobile';
+    if (w < 1024) return 'tablet';
+    return 'desktop';
+  });
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    const handleResize = () => {
+      const w = window.innerWidth;
+      setSize(w < 640 ? 'mobile' : w < 1024 ? 'tablet' : 'desktop');
+    };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const isMobile = size === 'mobile';
+
+  const responsive = useMemo(() => {
+    const BASE_SCALE = 2.25;
+    let scale = BASE_SCALE;
+    let groupY = 4;
+
+    if (size === 'mobile') {
+      scale = 3.0;
+      groupY = 3.6;
+    } else if (size === 'tablet') {
+      scale = 3.6;
+      groupY = 4.0;
+    } else {
+      scale = 4.2;
+      groupY = 4.5;
+    }
+
+    const factor = scale / BASE_SCALE;
+    const meshOffsetY = -1.2 * factor;
+    const meshOffsetZ = -0.05 * factor;
+    const cardCenterY = groupY + meshOffsetY;
+    const cardHeight = 2.25 * scale;
+
+    // Position camera so the card fills roughly 50-60% of the viewport height
+    const fovRad = (fov * Math.PI) / 180;
+    const targetZ = cardHeight / Math.tan(fovRad / 2);
+    const cameraZ = Math.max(targetZ * 0.58, position[2]);
+    const cameraY = cardCenterY;
+
+    return {
+      scale,
+      factor,
+      groupY,
+      meshOffsetY,
+      meshOffsetZ,
+      cameraZ,
+      cameraY,
+      colliderX: 0.8 * factor,
+      colliderY: 1.125 * factor,
+      colliderZ: 0.01 * factor,
+      lanyardWidth: lanyardWidth * factor,
+    };
+  }, [size, position, fov, lanyardWidth]);
+
   return (
     <div className="lanyard-wrapper">
       <Canvas
-        camera={{ position, fov }}
+        camera={{ position: [position[0], responsive.cameraY, responsive.cameraZ], fov }}
         dpr={[1, isMobile ? 1.5 : 2]}
         gl={{ alpha: transparent }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
@@ -69,12 +123,19 @@ export default function Lanyard({
         <ambientLight intensity={Math.PI} />
         <Physics gravity={gravity} timeStep={isMobile ? 1 / 30 : 1 / 60}>
           <Band
-            isMobile={isMobile}
+            size={size}
+            scale={responsive.scale}
+            groupY={responsive.groupY}
+            meshOffsetY={responsive.meshOffsetY}
+            meshOffsetZ={responsive.meshOffsetZ}
+            colliderX={responsive.colliderX}
+            colliderY={responsive.colliderY}
+            colliderZ={responsive.colliderZ}
+            lanyardWidth={responsive.lanyardWidth}
             frontImage={frontImage}
             backImage={backImage}
             imageFit={imageFit}
             lanyardImage={lanyardImage}
-            lanyardWidth={lanyardWidth}
             plainLanyard={plainLanyard}
             lanyardColor={lanyardColor}
           />
