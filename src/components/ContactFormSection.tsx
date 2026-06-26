@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import { Phone, Mail, Link as LinkIcon, Linkedin } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
+import { StatefulButton } from "@/components/ui/stateful-button";
 import { Label } from "@/components/ui/label";
 
 const contactSchema = z.object({
@@ -200,13 +200,13 @@ const ContactFormSection = () => {
               )}
             </div>
 
-            <Button
+            <StatefulButton
               type="submit"
               disabled={isSubmitting}
-              className="w-full sm:w-auto px-8 py-3 h-auto bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50"
+              className="w-full sm:w-auto"
             >
-              {isSubmitting ? "Opening email..." : "Send Message"}
-            </Button>
+              Send Message
+            </StatefulButton>
           </form>
         </div>
       </div>
