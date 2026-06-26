@@ -111,42 +111,13 @@ const Navbar = () => {
   return (
     <>
       <nav 
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-4 md:px-16 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-start px-8 py-4 md:px-16 transition-all duration-300 ${
           isScrolled && !isMenuOpen
-            ? "bg-background/80 backdrop-blur-md border-b border-border/50" 
+            ? "bg-background/80 backdrop-blur-md border-b border-border/50"
             : "bg-transparent"
         }`}
       >
-        {/* Navbar Links - Hidden when menu is open */}
-        <div 
-          className={`flex items-center gap-8 md:gap-12 transition-opacity duration-300 ${
-            isMenuOpen ? "opacity-0 pointer-events-none" : "opacity-100"
-          }`}
-        >
-          <a 
-            href="/#projects"
-            onClick={(e) => handleNavClick(e, { href: "/#projects", id: "projects" })}
-            className="text-foreground text-sm md:text-base font-medium tracking-wide hover:text-primary transition-colors"
-          >
-            Projects
-          </a>
-          <a 
-            href="/#about"
-            onClick={(e) => handleNavClick(e, { href: "/#about", id: "about" })}
-            className="text-foreground text-sm md:text-base font-medium tracking-wide hover:text-primary transition-colors"
-          >
-            About
-          </a>
-          <a 
-            href="/#contact"
-            onClick={(e) => handleNavClick(e, { href: "/#contact", id: "contact" })}
-            className="text-foreground text-sm md:text-base font-medium tracking-wide hover:text-primary transition-colors"
-          >
-            Contact
-          </a>
-        </div>
-        
-        {/* Theme + Menu Toggle Buttons */}
+        {/* Theme + Menu Toggle Buttons (left side) */}
         <div className="relative z-[60] flex items-center gap-3">
           <Toggle className="glass-surface" />
           <button
@@ -167,6 +138,7 @@ const Navbar = () => {
           </button>
         </div>
       </nav>
+
 
 
       {/* Bubble Menu Overlay */}
