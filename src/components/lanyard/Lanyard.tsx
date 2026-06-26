@@ -99,6 +99,8 @@ interface BandProps {
   imageFit?: 'cover' | 'contain';
   lanyardImage?: string | null;
   lanyardWidth?: number;
+  plainLanyard?: boolean;
+  lanyardColor?: string;
 }
 
 function Band({
