@@ -39,9 +39,9 @@ const contactInfo = [
 ];
 
 const socialLinks = [
-  { label: "Instagram", href: "#", icon: LinkIcon },
+  { label: "Instagram", href: "https://www.instagram.com/phani1117", icon: LinkIcon },
   { label: "Behance", href: "https://www.behance.net/phaneendrareddy", icon: BehanceIcon },
-  { label: "LinkedIn", href: "#", icon: Linkedin },
+  { label: "LinkedIn", href: "https://in.linkedin.com/in/bhimavarapu-phaneendra-reddy-2663a9211/en", icon: Linkedin },
 ];
 
 const ContactFormSection = () => {
