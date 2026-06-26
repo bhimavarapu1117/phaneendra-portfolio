@@ -109,7 +109,7 @@ const ContactFormSection = () => {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="group flex items-start gap-4 p-4 border border-border bg-card/30 hover:bg-card/60 transition-colors"
+                  className="group flex items-start gap-4 p-4 border border-border bg-card/30 hover:bg-card/60 transition-colors lg:flex-1"
                 >
                   <span className="flex items-center justify-center w-10 h-10 border border-border text-muted-foreground group-hover:text-foreground transition-colors">
                     <Icon className="w-4 h-4" />
@@ -126,7 +126,7 @@ const ContactFormSection = () => {
               );
             })}
 
-            <div className="p-4 border border-border bg-card/30">
+            <div className="p-4 border border-border bg-card/30 lg:flex-1">
               <div className="flex items-start gap-4">
                 <span className="flex items-center justify-center w-10 h-10 border border-border text-muted-foreground">
                   <LinkIcon className="w-4 h-4" />
