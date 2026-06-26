@@ -42,7 +42,15 @@ export const StatefulButton = ({ className, children, status = "idle", ...props 
     runAnimation();
   }, [status, animate]);
 
-  const { onClick, ...buttonProps } = props;
+  const {
+    onClick,
+    onDrag,
+    onDragStart,
+    onDragEnd,
+    onAnimationStart,
+    onAnimationEnd,
+    ...buttonProps
+  } = props;
 
   return (
     <motion.button
