@@ -154,7 +154,14 @@ export default function Lanyard({
 interface BandProps {
   maxSpeed?: number;
   minSpeed?: number;
-  isMobile?: boolean;
+  size?: 'mobile' | 'tablet' | 'desktop';
+  scale?: number;
+  groupY?: number;
+  meshOffsetY?: number;
+  meshOffsetZ?: number;
+  colliderX?: number;
+  colliderY?: number;
+  colliderZ?: number;
   frontImage?: string | null;
   backImage?: string | null;
   imageFit?: 'cover' | 'contain';
@@ -167,7 +174,14 @@ interface BandProps {
 function Band({
   maxSpeed = 50,
   minSpeed = 0,
-  isMobile = false,
+  size = 'desktop',
+  scale = 2.25,
+  groupY = 4,
+  meshOffsetY = -1.2,
+  meshOffsetZ = -0.05,
+  colliderX = 0.8,
+  colliderY = 1.125,
+  colliderZ = 0.01,
   frontImage = null,
   backImage = null,
   imageFit = 'cover',
@@ -254,6 +268,8 @@ function Band({
     }
   }, [hovered, dragged]);
 
+  const isMobile = size === 'mobile';
+
   useFrame((state, delta) => {
     if (dragged) {
       vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera);
@@ -284,7 +300,7 @@ function Band({
 
   return (
     <>
-      <group position={[0, 4, 0]}>
+      <group position={[0, groupY, 0]}>
         <RigidBody ref={fixed} {...segmentProps} type="fixed" />
         <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps}>
           <BallCollider args={[0.1]} />
@@ -296,10 +312,10 @@ function Band({
           <BallCollider args={[0.1]} />
         </RigidBody>
         <RigidBody position={[2, 0, 0]} ref={card} {...segmentProps} type={dragged ? 'kinematicPosition' : 'dynamic'}>
-          <CuboidCollider args={[0.8, 1.125, 0.01]} />
+          <CuboidCollider args={[colliderX, colliderY, colliderZ]} />
           <group
-            scale={2.25}
-            position={[0, -1.2, -0.05]}
+            scale={scale}
+            position={[0, meshOffsetY, meshOffsetZ]}
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
             onPointerUp={(e: any) => (e.target.releasePointerCapture(e.pointerId), drag(false))}
