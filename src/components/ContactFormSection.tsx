@@ -127,7 +127,7 @@ const ContactFormSection = () => {
             })}
 
             <div className="p-4 border border-border bg-card/30 lg:flex-1">
-              <div className="flex items-start gap-4">
+              <div className="flex items-center gap-4">
                 <span className="flex items-center justify-center w-10 h-10 border border-border text-muted-foreground">
                   <LinkIcon className="w-4 h-4" />
                 </span>
