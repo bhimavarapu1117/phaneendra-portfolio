@@ -267,11 +267,11 @@ function Band({
         <meshLineGeometry />
         {/* @ts-expect-error meshline extension */}
         <meshLineMaterial
-          color="white"
+          color={plainLanyard ? lanyardColor : 'white'}
           depthTest={false}
           resolution={isMobile ? [1000, 2000] : [1000, 1000]}
-          useMap
-          map={texture}
+          useMap={!plainLanyard}
+          map={plainLanyard ? undefined : texture}
           repeat={[-4, 1]}
           lineWidth={lanyardWidth}
         />
