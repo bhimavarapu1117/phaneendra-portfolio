@@ -85,10 +85,7 @@ const ContactFormSection = () => {
             Get in touch
           </h2>
           <div className="mt-4 md:mt-6 max-w-2xl">
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-medium text-foreground">
-              Get in Touch
-            </h3>
-            <p className="mt-3 md:mt-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
               Want to know more about me? Whether you have a question, an idea, or just want to say hello, I'd love to hear from you.
             </p>
             <p className="mt-2 text-sm sm:text-base text-muted-foreground leading-relaxed">
