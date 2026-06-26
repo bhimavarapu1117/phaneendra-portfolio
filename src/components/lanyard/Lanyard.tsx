@@ -91,10 +91,12 @@ export default function Lanyard({
     const cardCenterY = groupY + meshOffsetY;
     const cardHeight = 2.25 * scale;
 
-    // Position camera so the card fills roughly 50-60% of the viewport height
+    // Position camera so the card fills roughly 80% of the viewport height
+    // across mobile, tablet, and desktop without being clipped.
     const fovRad = (fov * Math.PI) / 180;
-    const targetZ = cardHeight / Math.tan(fovRad / 2);
-    const cameraZ = Math.max(targetZ * 0.58, position[2]);
+    const targetFill = 0.8;
+    const targetZ = cardHeight / (2 * targetFill * Math.tan(fovRad / 2));
+    const cameraZ = Math.max(targetZ, position[2]);
     const cameraY = cardCenterY;
 
     return {
