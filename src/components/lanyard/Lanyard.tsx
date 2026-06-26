@@ -50,74 +50,18 @@ export default function Lanyard({
   plainLanyard = false,
   lanyardColor = 'white',
 }: LanyardProps) {
-  const [size, setSize] = useState<'mobile' | 'tablet' | 'desktop'>(() => {
-    if (typeof window === 'undefined') return 'desktop';
-    const w = window.innerWidth;
-    if (w < 640) return 'mobile';
-    if (w < 1024) return 'tablet';
-    return 'desktop';
-  });
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
 
   useEffect(() => {
-    const handleResize = () => {
-      const w = window.innerWidth;
-      setSize(w < 640 ? 'mobile' : w < 1024 ? 'tablet' : 'desktop');
-    };
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const isMobile = size === 'mobile';
-
-  const responsive = useMemo(() => {
-    const BASE_SCALE = 2.25;
-    let scale = BASE_SCALE;
-    let groupY = 4;
-
-    if (size === 'mobile') {
-      scale = 3.0;
-      groupY = 3.6;
-    } else if (size === 'tablet') {
-      scale = 3.6;
-      groupY = 4.0;
-    } else {
-      scale = 4.2;
-      groupY = 4.5;
-    }
-
-    const factor = scale / BASE_SCALE;
-    const meshOffsetY = -1.2 * factor;
-    const meshOffsetZ = -0.05 * factor;
-    const cardCenterY = groupY + meshOffsetY;
-    const cardHeight = 2.25 * scale;
-
-    // Position camera so the card fills roughly 80% of the viewport height
-    // across mobile, tablet, and desktop without being clipped.
-    const fovRad = (fov * Math.PI) / 180;
-    const targetFill = 0.8;
-    const targetZ = cardHeight / (2 * targetFill * Math.tan(fovRad / 2));
-    const cameraZ = Math.max(targetZ, position[2]);
-    const cameraY = cardCenterY;
-
-    return {
-      scale,
-      factor,
-      groupY,
-      meshOffsetY,
-      meshOffsetZ,
-      cameraZ,
-      cameraY,
-      colliderX: 0.8 * factor,
-      colliderY: 1.125 * factor,
-      colliderZ: 0.01 * factor,
-      lanyardWidth: lanyardWidth * factor,
-    };
-  }, [size, position, fov, lanyardWidth]);
-
   return (
     <div className="lanyard-wrapper">
       <Canvas
-        camera={{ position: [position[0], responsive.cameraY, responsive.cameraZ], fov }}
+        camera={{ position, fov }}
         dpr={[1, isMobile ? 1.5 : 2]}
         gl={{ alpha: transparent }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
@@ -125,19 +69,12 @@ export default function Lanyard({
         <ambientLight intensity={Math.PI} />
         <Physics gravity={gravity} timeStep={isMobile ? 1 / 30 : 1 / 60}>
           <Band
-            size={size}
-            scale={responsive.scale}
-            groupY={responsive.groupY}
-            meshOffsetY={responsive.meshOffsetY}
-            meshOffsetZ={responsive.meshOffsetZ}
-            colliderX={responsive.colliderX}
-            colliderY={responsive.colliderY}
-            colliderZ={responsive.colliderZ}
-            lanyardWidth={responsive.lanyardWidth}
+            isMobile={isMobile}
             frontImage={frontImage}
             backImage={backImage}
             imageFit={imageFit}
             lanyardImage={lanyardImage}
+            lanyardWidth={lanyardWidth}
             plainLanyard={plainLanyard}
             lanyardColor={lanyardColor}
           />
@@ -156,14 +93,7 @@ export default function Lanyard({
 interface BandProps {
   maxSpeed?: number;
   minSpeed?: number;
-  size?: 'mobile' | 'tablet' | 'desktop';
-  scale?: number;
-  groupY?: number;
-  meshOffsetY?: number;
-  meshOffsetZ?: number;
-  colliderX?: number;
-  colliderY?: number;
-  colliderZ?: number;
+  isMobile?: boolean;
   frontImage?: string | null;
   backImage?: string | null;
   imageFit?: 'cover' | 'contain';
@@ -176,14 +106,7 @@ interface BandProps {
 function Band({
   maxSpeed = 50,
   minSpeed = 0,
-  size = 'desktop',
-  scale = 2.25,
-  groupY = 4,
-  meshOffsetY = -1.2,
-  meshOffsetZ = -0.05,
-  colliderX = 0.8,
-  colliderY = 1.125,
-  colliderZ = 0.01,
+  isMobile = false,
   frontImage = null,
   backImage = null,
   imageFit = 'cover',
@@ -270,8 +193,6 @@ function Band({
     }
   }, [hovered, dragged]);
 
-  const isMobile = size === 'mobile';
-
   useFrame((state, delta) => {
     if (dragged) {
       vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera);
@@ -302,7 +223,7 @@ function Band({
 
   return (
     <>
-      <group position={[0, groupY, 0]}>
+      <group position={[0, 4, 0]}>
         <RigidBody ref={fixed} {...segmentProps} type="fixed" />
         <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps}>
           <BallCollider args={[0.1]} />
@@ -314,10 +235,10 @@ function Band({
           <BallCollider args={[0.1]} />
         </RigidBody>
         <RigidBody position={[2, 0, 0]} ref={card} {...segmentProps} type={dragged ? 'kinematicPosition' : 'dynamic'}>
-          <CuboidCollider args={[colliderX, colliderY, colliderZ]} />
+          <CuboidCollider args={[0.8, 1.125, 0.01]} />
           <group
-            scale={scale}
-            position={[0, meshOffsetY, meshOffsetZ]}
+            scale={2.25}
+            position={[0, -1.2, -0.05]}
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
             onPointerUp={(e: any) => (e.target.releasePointerCapture(e.pointerId), drag(false))}
