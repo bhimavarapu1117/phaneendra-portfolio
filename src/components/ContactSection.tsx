@@ -23,7 +23,15 @@ const ContactSection = () => {
 
           {/* Lanyard 3D */}
           <div className="absolute inset-0 z-10">
-            <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} />
+            <Lanyard
+              position={[0, 0, 20]}
+              gravity={[0, -40, 0]}
+              frontImage={photo}
+              backImage={photo}
+              imageFit="cover"
+              plainLanyard
+              lanyardColor="#0a0a0a"
+            />
           </div>
 
           {/* Name Caption */}
