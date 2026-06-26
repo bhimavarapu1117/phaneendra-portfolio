@@ -6,11 +6,6 @@ import VariableProximity from "./variable-proximity/VariableProximity";
 const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleScrollDown = () => {
-    const about = document.getElementById("about");
-    if (about) about.scrollIntoView({ behavior: "smooth" });
-    else window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
-  };
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-transparent">
