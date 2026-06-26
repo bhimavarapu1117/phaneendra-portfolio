@@ -28,7 +28,7 @@ const PolaroidCard = ({
       className={cn(
         "relative bg-[#d4d4d4] p-3 shadow-2xl",
         showCaption ? "pb-16" : "pb-3",
-        "w-[280px] md:w-[340px]",
+        "w-[240px] sm:w-[280px] md:w-[340px] max-w-[80vw]",
         className
       )}
       style={style}

@@ -13,25 +13,25 @@ const timelineColumns: TimelineColumn[] = [
     step: "01",
     title: "Foundation\nYear",
     duration: "[ 2018 · Bangalore University ]",
-    cardHeight: "h-[280px]"
+    cardHeight: "min-h-[220px] lg:h-[280px]"
   },
   {
     step: "02",
     title: "Bachelor of\nVisual Art",
     duration: "[ 2018–2022 · Bangalore University ]",
-    cardHeight: "h-[340px]"
+    cardHeight: "min-h-[220px] lg:h-[340px]"
   },
   {
     step: "03",
     title: "Joined\nCognizant",
     duration: "[ Sept 2022 · Visual Designer ]",
-    cardHeight: "h-[400px]"
+    cardHeight: "min-h-[220px] lg:h-[400px]"
   },
   {
     step: "04",
     title: "Senior\nGraphic Designer",
     duration: "[ 2024–now · 3+ years experience ]",
-    cardHeight: "h-[460px]"
+    cardHeight: "min-h-[220px] lg:h-[460px]"
   }
 ];
 
@@ -60,7 +60,7 @@ const TimelineSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative w-full py-24 px-6 md:px-12 lg:px-20 bg-background"
+      className="relative w-full py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-12 lg:px-20 bg-background"
     >
       {/* Decorative grid lines */}
       <div className="absolute inset-0 pointer-events-none">
@@ -131,8 +131,8 @@ const TimelineSection = () => {
                 </div>
 
                 {/* Card panel - anchored to bottom, varying heights */}
-                <div className={`${col.cardHeight} bg-card/60 backdrop-blur-sm border-t-[3px] border-accent flex flex-col p-6`}>
-                  <h3 className="font-sans text-3xl md:text-4xl font-medium tracking-tight text-muted-foreground whitespace-pre-line leading-tight">
+                <div className={`${col.cardHeight} bg-card/60 backdrop-blur-sm border-t-[3px] border-accent flex flex-col p-5 sm:p-6`}>
+                  <h3 className="font-sans text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight text-muted-foreground whitespace-pre-line leading-tight">
                     {col.title}
                   </h3>
 
