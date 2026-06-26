@@ -1,27 +1,56 @@
 import { useRef } from "react";
+import { Mouse } from "lucide-react";
 import Navbar from "./Navbar";
 import ProjectCarousel from "./ProjectCarousel";
 import VariableProximity from "./variable-proximity/VariableProximity";
 
 const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleScrollDown = () => {
+    const about = document.getElementById("about");
+    if (about) about.scrollIntoView({ behavior: "smooth" });
+    else window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+  };
+
   return (
     <section className="relative h-screen w-full overflow-hidden bg-transparent">
       <Navbar />
 
       <div
         ref={containerRef}
-        className="relative z-10 h-full flex items-center justify-center px-6 md:px-16 pt-24 pb-32 md:pb-40"
+        className="relative z-10 h-full flex flex-col items-center justify-center px-6 md:px-16 pt-24 pb-24"
       >
-        <VariableProximity
-          label={"Designing experiences that move people."}
-          className="text-foreground text-center text-3xl sm:text-5xl md:text-7xl lg:text-8xl leading-tight tracking-tight max-w-5xl"
-          fromFontVariationSettings="'wght' 300, 'opsz' 14"
-          toFontVariationSettings="'wght' 1000, 'opsz' 40"
-          containerRef={containerRef}
-          radius={140}
-          falloff="gaussian"
-        />
+        <h1 className="max-w-6xl text-center">
+          <VariableProximity
+            label={"Design experiences people actually feel."}
+            className="text-foreground text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight"
+            fromFontVariationSettings="'wght' 400, 'opsz' 14"
+            toFontVariationSettings="'wght' 1000, 'opsz' 40"
+            containerRef={containerRef}
+            radius={140}
+            falloff="gaussian"
+          />
+        </h1>
+
+        <p className="mt-8 text-center text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
+          A beautiful journey starts with a quiet note.
+          <br />
+          Great design always <span className="text-primary font-medium">speaks.</span>
+        </p>
+
+        <button
+          onClick={handleScrollDown}
+          aria-label="Scroll down"
+          className="mt-12 md:mt-16 flex flex-col items-center gap-2 text-primary hover:opacity-80 transition-opacity group"
+        >
+          <span className="flex items-center gap-2 text-xs sm:text-sm tracking-[0.3em] font-mono uppercase">
+            <span aria-hidden>{"≷"}</span>
+            Scroll Down
+            <span aria-hidden>{"≶"}</span>
+          </span>
+          <Mouse className="w-5 h-5 sm:w-6 sm:h-6 animate-bounce" strokeWidth={1.5} />
+        </button>
       </div>
 
       <ProjectCarousel />
