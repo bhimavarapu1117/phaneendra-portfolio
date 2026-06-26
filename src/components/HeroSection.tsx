@@ -38,18 +38,6 @@ const HeroSection = () => {
           Great design always <span className="text-primary font-medium">speaks.</span>
         </p>
 
-        <button
-          onClick={handleScrollDown}
-          aria-label="Scroll down"
-          className="mt-12 md:mt-16 flex flex-col items-center gap-2 text-primary hover:opacity-80 transition-opacity group"
-        >
-          <span className="flex items-center gap-2 text-xs sm:text-sm tracking-[0.3em] font-mono uppercase">
-            <span aria-hidden>{"≷"}</span>
-            Scroll Down
-            <span aria-hidden>{"≶"}</span>
-          </span>
-          <Mouse className="w-5 h-5 sm:w-6 sm:h-6 animate-bounce" strokeWidth={1.5} />
-        </button>
       </div>
 
       <ProjectCarousel />
