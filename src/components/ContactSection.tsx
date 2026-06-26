@@ -1,7 +1,9 @@
 import contactBgAsset from "@/assets/contact-bg.png.asset.json";
+import photoAsset from "@/assets/phaneendra-photo.jpg.asset.json";
 import Lanyard from "@/components/lanyard/Lanyard";
 
 const contactBg = contactBgAsset.url;
+const photo = photoAsset.url;
 
 const ContactSection = () => {
   return (
