@@ -100,7 +100,7 @@ const ContactFormSection = () => {
         </div>
 
         {/* Two-column layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 lg:items-stretch">
           {/* Contact info */}
           <div className="space-y-6">
             {contactInfo.map((item) => {
