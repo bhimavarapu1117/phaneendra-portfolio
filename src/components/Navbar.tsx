@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Toggle } from "@/components/base/toggle/toggle";
+import BubbleMenu, { type BubbleMenuItem } from "@/components/bubble-menu/BubbleMenu";
 
 
 const Navbar = () => {
