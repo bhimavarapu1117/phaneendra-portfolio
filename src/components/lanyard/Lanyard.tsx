@@ -33,6 +33,8 @@ interface LanyardProps {
   imageFit?: 'cover' | 'contain';
   lanyardImage?: string | null;
   lanyardWidth?: number;
+  plainLanyard?: boolean;
+  lanyardColor?: string;
 }
 
 export default function Lanyard({
@@ -45,6 +47,8 @@ export default function Lanyard({
   imageFit = 'cover',
   lanyardImage = null,
   lanyardWidth = 1,
+  plainLanyard = false,
+  lanyardColor = 'white',
 }: LanyardProps) {
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
 
@@ -71,6 +75,8 @@ export default function Lanyard({
             imageFit={imageFit}
             lanyardImage={lanyardImage}
             lanyardWidth={lanyardWidth}
+            plainLanyard={plainLanyard}
+            lanyardColor={lanyardColor}
           />
         </Physics>
         <Environment blur={0.75}>
@@ -93,6 +99,8 @@ interface BandProps {
   imageFit?: 'cover' | 'contain';
   lanyardImage?: string | null;
   lanyardWidth?: number;
+  plainLanyard?: boolean;
+  lanyardColor?: string;
 }
 
 function Band({
@@ -104,6 +112,8 @@ function Band({
   imageFit = 'cover',
   lanyardImage = null,
   lanyardWidth = 1,
+  plainLanyard = false,
+  lanyardColor = 'white',
 }: BandProps) {
   const band = useRef<any>(),
     fixed = useRef<any>(),
@@ -257,11 +267,11 @@ function Band({
         <meshLineGeometry />
         {/* @ts-expect-error meshline extension */}
         <meshLineMaterial
-          color="white"
+          color={plainLanyard ? lanyardColor : 'white'}
           depthTest={false}
           resolution={isMobile ? [1000, 2000] : [1000, 1000]}
-          useMap
-          map={texture}
+          useMap={!plainLanyard}
+          map={plainLanyard ? undefined : texture}
           repeat={[-4, 1]}
           lineWidth={lanyardWidth}
         />

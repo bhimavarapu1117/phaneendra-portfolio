@@ -1,7 +1,9 @@
 import contactBgAsset from "@/assets/contact-bg.png.asset.json";
+import photoAsset from "@/assets/phaneendra-photo.jpg.asset.json";
 import Lanyard from "@/components/lanyard/Lanyard";
 
 const contactBg = contactBgAsset.url;
+const photo = photoAsset.url;
 
 const ContactSection = () => {
   return (
@@ -21,7 +23,15 @@ const ContactSection = () => {
 
           {/* Lanyard 3D */}
           <div className="absolute inset-0 z-10">
-            <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} />
+            <Lanyard
+              position={[0, 0, 20]}
+              gravity={[0, -40, 0]}
+              frontImage={photo}
+              backImage={photo}
+              imageFit="cover"
+              plainLanyard
+              lanyardColor="#0a0a0a"
+            />
           </div>
 
           {/* Name Caption */}
