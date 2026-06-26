@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Phone, Mail, Instagram, Linkedin } from "lucide-react";
+import { Phone, Mail, Link as LinkIcon, Linkedin } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -39,7 +39,7 @@ const contactInfo = [
 ];
 
 const socialLinks = [
-  { label: "Instagram", href: "#", icon: Instagram },
+  { label: "Instagram", href: "#", icon: LinkIcon },
   { label: "Behance", href: "https://www.behance.net/phaneendrareddy", icon: BehanceIcon },
   { label: "LinkedIn", href: "#", icon: Linkedin },
 ];
@@ -127,7 +127,7 @@ const ContactFormSection = () => {
             <div className="p-4 border border-border bg-card/30">
               <div className="flex items-start gap-4">
                 <span className="flex items-center justify-center w-10 h-10 border border-border text-muted-foreground">
-                  <Instagram className="w-4 h-4" />
+                  <LinkIcon className="w-4 h-4" />
                 </span>
                 <div>
                   <p className="text-xs uppercase tracking-wider text-muted-foreground">Connect</p>
