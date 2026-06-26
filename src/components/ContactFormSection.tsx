@@ -200,13 +200,13 @@ const ContactFormSection = () => {
               )}
             </div>
 
-            <Button
+            <StatefulButton
               type="submit"
               disabled={isSubmitting}
-              className="w-full sm:w-auto px-8 py-3 h-auto bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50"
+              className="w-full sm:w-auto"
             >
-              {isSubmitting ? "Opening email..." : "Send Message"}
-            </Button>
+              Send Message
+            </StatefulButton>
           </form>
         </div>
       </div>
