@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import { Phone, Mail, Link as LinkIcon, Linkedin } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
+import { StatefulButton } from "@/components/ui/stateful-button";
 import { Label } from "@/components/ui/label";
 
 const contactSchema = z.object({
