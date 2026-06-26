@@ -81,9 +81,8 @@ const HeroBackground = () => {
           ref={videoRef}
           src={videoAsset.url}
           className={cn(
-            // contain on portrait/mobile so the full video is visible without cropping,
-            // cover on landscape/desktop to fill the viewport edge-to-edge.
-            "h-full w-full object-contain landscape:object-cover md:object-cover transition-[filter,opacity] duration-300",
+            // contain everywhere so the full video plays without cropping on any device
+            "h-full w-full object-contain transition-[filter,opacity] duration-300",
             isLight && "mix-blend-multiply brightness-125 contrast-110"
           )}
           muted
