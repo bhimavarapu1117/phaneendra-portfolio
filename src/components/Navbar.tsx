@@ -169,75 +169,34 @@ const Navbar = () => {
       </nav>
 
 
-      {/* Fullscreen Menu Overlay */}
-      <div 
-        className={`fixed inset-0 z-40 transition-all duration-500 ${
-          isMenuOpen 
-            ? "opacity-100 pointer-events-auto" 
-            : "opacity-0 pointer-events-none"
-        }`}
-      >
-        {/* Liquid Glass Background */}
-        <div className="absolute inset-0 glass-liquid" />
-        
-        {/* Menu Content */}
-        <div className="relative h-full flex flex-col justify-between px-8 py-24 md:px-16">
-          {/* Navigation Links - Right Aligned */}
-          <nav className="flex-1 flex flex-col items-end justify-center gap-4 md:gap-6">
-            {navLinks.map((link, index) => {
-              const isActive = activeSection === link.id;
-              return (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link)}
-                  className={`group relative px-4 py-2 md:px-6 md:py-3 text-4xl md:text-6xl lg:text-7xl transition-all duration-500 ${
-                    isMenuOpen 
-                      ? "opacity-100 translate-x-0" 
-                      : "opacity-0 translate-x-8"
-                  }`}
-                  style={{ 
-                    transitionDelay: isMenuOpen ? `${150 + index * 100}ms` : "0ms" 
-                  }}
-                >
-                  <span className="glass-surface absolute inset-0" />
-                  <span className={`relative z-10 ${
-                    isActive 
-                      ? "font-medium text-foreground" 
-                      : "font-light text-muted-foreground/80 group-hover:text-foreground"
-                  }`}>
-                    {link.label}
-                  </span>
-                </a>
-              );
-            })}
-          </nav>
-          
-          {/* Social Links - Bottom Left */}
-          <div className="flex flex-wrap gap-3 md:gap-4">
-            {socialLinks.map((link, index) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={handleSocialClick}
-                className={`group relative px-3 py-2 text-sm md:text-base text-muted-foreground hover:text-foreground transition-all duration-500 ${
-                  isMenuOpen 
-                    ? "opacity-100 translate-y-0" 
-                    : "opacity-0 translate-y-4"
-                }`}
-                style={{ 
-                  transitionDelay: isMenuOpen ? `${400 + index * 75}ms` : "0ms" 
-                }}
-              >
-                <span className="glass-surface absolute inset-0" />
-                <span className="relative z-10">[ {link.label} ]</span>
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* Bubble Menu Overlay */}
+      <BubbleMenu
+        isOpen={isMenuOpen}
+        useFixedPosition
+        items={[
+          {
+            label: "Projects",
+            href: "/#projects",
+            ariaLabel: "Projects",
+            rotation: -8,
+            onClick: (e) => handleNavClick(e, { href: "/#projects", id: "projects" }),
+          },
+          {
+            label: "About",
+            href: "/#about",
+            ariaLabel: "About",
+            rotation: 8,
+            onClick: (e) => handleNavClick(e, { href: "/#about", id: "about" }),
+          },
+          {
+            label: "Contact",
+            href: "/#contact",
+            ariaLabel: "Contact",
+            rotation: -8,
+            onClick: (e) => handleNavClick(e, { href: "/#contact", id: "contact" }),
+          },
+        ] satisfies BubbleMenuItem[]}
+      />
     </>
   );
 };
