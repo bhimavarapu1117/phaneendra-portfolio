@@ -45,7 +45,7 @@ const socialLinks = [
 ];
 
 const ContactFormSection = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [buttonStatus, setButtonStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const {
     register,
@@ -57,7 +57,7 @@ const ContactFormSection = () => {
   });
 
   const onSubmit = (data: ContactFormValues) => {
-    setIsSubmitting(true);
+    setButtonStatus("loading");
 
     const subject = encodeURIComponent(`Message from ${data.name}`);
     const body = encodeURIComponent(
@@ -65,15 +65,20 @@ const ContactFormSection = () => {
     );
     const mailtoLink = `mailto:phaneendrareddy0208@gmail.com?subject=${subject}&body=${body}`;
 
-    // Small delay to show feedback; then open the user's email client.
     setTimeout(() => {
       window.location.href = mailtoLink;
-      setIsSubmitting(false);
+      setButtonStatus("success");
       reset();
       toast.success("Message ready to send", {
         description: "Your default email client has been opened.",
       });
+      setTimeout(() => setButtonStatus("idle"), 2000);
     }, 400);
+  };
+
+  const onError = () => {
+    setButtonStatus("error");
+    setTimeout(() => setButtonStatus("idle"), 2000);
   };
 
   return (
@@ -151,7 +156,7 @@ const ContactFormSection = () => {
           </div>
 
           {/* Contact form */}
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+          <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-5">
             <div className="space-y-2">
               <Label htmlFor="contact-name" className="text-sm text-foreground">
                 Name
@@ -201,8 +206,9 @@ const ContactFormSection = () => {
             </div>
 
             <StatefulButton
-              type="submit"
-              disabled={isSubmitting}
+              type="button"
+              status={buttonStatus}
+              onClick={() => handleSubmit(onSubmit, onError)()}
               className="w-full sm:w-auto"
             >
               Send Message
