@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import { Mouse } from "lucide-react";
 import Navbar from "./Navbar";
 import ProjectCarousel from "./ProjectCarousel";
 import VariableProximity from "./variable-proximity/VariableProximity";
