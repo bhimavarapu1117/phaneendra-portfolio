@@ -11,6 +11,8 @@ type TimelineColumn = {
   /** Card height for staircase effect */
   cardHeight: string;
   image: string;
+  /** Optional background position for the grayscale image */
+  bgPosition?: string;
 };
 
 const timelineColumns: TimelineColumn[] = [
