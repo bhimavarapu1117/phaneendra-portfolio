@@ -1,4 +1,5 @@
 import { useState, useMemo, useRef, useEffect } from "react";
+import roadSafetyAsset from "@/assets/road-safety.png.asset.json";
 import { Link } from "react-router-dom";
 import { useProjects } from "@/hooks/useProjects";
 import { cn } from "@/lib/utils";
