@@ -43,6 +43,7 @@ const timelineColumns: TimelineColumn[] = [
     duration: "[ 2024–now · 3+ years experience ]",
     cardHeight: "min-h-[220px] lg:h-[460px]",
     image: timeline4,
+    bgPosition: "center 65%",
   }
 ];
 
