@@ -160,7 +160,6 @@ const AboutSection = () => {
                 <PolaroidCard 
                   image={card.image} 
                   name={card.showCaption ? card.name : undefined}
-                  subtitle={card.showCaption ? card.subtitle : undefined}
                   showCaption={card.showCaption}
                 />
               </div>
