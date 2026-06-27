@@ -273,18 +273,6 @@ const ProjectsSection = () => {
           </div>
         ) : filteredProjects.length === 0 ? (
           <div className="space-y-10">
-            <div className="max-w-2xl space-y-3">
-              <span className="text-muted-foreground text-xs font-medium tracking-widest uppercase">
-                [ Showcase ]
-              </span>
-              <h3 className="text-2xl md:text-3xl font-medium text-foreground leading-tight">
-                Fresh work, dropping soon.
-              </h3>
-              <p className="text-muted-foreground text-sm md:text-base">
-                New case studies are being prepared. In the meantime, here's a glimpse of the disciplines I work across.
-              </p>
-            </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 {
