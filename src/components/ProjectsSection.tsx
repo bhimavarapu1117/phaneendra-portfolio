@@ -300,6 +300,14 @@ const ProjectsSection = () => {
                   gradient:
                     "bg-[radial-gradient(circle_at_50%_20%,hsl(var(--primary)/0.5),transparent_60%),radial-gradient(circle_at_50%_90%,hsl(var(--accent)/0.55),transparent_55%),linear-gradient(180deg,hsl(var(--secondary)),hsl(var(--muted)))]",
                 },
+                {
+                  index: "04",
+                  title: "Freelancing",
+                  description:
+                    "Independent commissions and client partnerships — from concept to delivery, shaping design work that fits real briefs and tighter timelines.",
+                  gradient:
+                    "bg-[radial-gradient(circle_at_50%_50%,hsl(var(--accent)/0.5),transparent_60%),linear-gradient(135deg,hsl(var(--muted)),hsl(var(--secondary)))]",
+                },
               ].map((item) => (
                 <Card
                   key={item.index}
@@ -326,10 +334,7 @@ const ProjectsSection = () => {
                       {item.description}
                     </CardDescription>
                   </CardContent>
-                  <CardFooter className="flex items-center justify-between gap-2 pt-0">
-                    <Button variant="ghost" size="sm" className="rounded-none px-0 hover:bg-transparent hover:text-foreground">
-                      Explore More
-                    </Button>
+                  <CardFooter className="flex items-center justify-end gap-2 pt-0">
                     {(item as any).href ? (
                       <Button asChild variant="default" size="sm" className="rounded-none">
                         <a href={(item as any).href} target="_blank" rel="noopener noreferrer">
