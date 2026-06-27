@@ -106,9 +106,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       gsap.set(plusV, { transformOrigin: "50% 50%", rotate: 90 });
       gsap.set(icon, { rotate: 0, transformOrigin: "50% 50%" });
       gsap.set(textInner, { yPercent: 0 });
-      if (toggleBtnRef.current) {
-        const { fg } = getThemeColors();
-        gsap.set(toggleBtnRef.current, { color: effectiveMenuButtonColor || fg });
+      if (toggleBtnRef.current && effectiveMenuButtonColor) {
+        gsap.set(toggleBtnRef.current, { color: effectiveMenuButtonColor });
       }
     });
     return () => ctx.revert();
