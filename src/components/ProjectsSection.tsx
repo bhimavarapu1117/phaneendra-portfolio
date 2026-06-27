@@ -3,16 +3,17 @@ import { Link } from "react-router-dom";
 import { useProjects } from "@/hooks/useProjects";
 import { cn } from "@/lib/utils";
 import { resolveImageUrl } from "@/lib/assetResolver";
-import { 
-  Grid2X2, 
-  Columns2, 
-  Sparkles, 
-  Box, 
-  Lightbulb, 
-  LayoutGrid, 
+import CardSwap, { Card as SwapCard } from "@/components/card-swap/CardSwap";
+import {
+  Grid2X2,
+  Columns2,
+  Sparkles,
+  Box,
+  Lightbulb,
+  LayoutGrid,
   Brush,
   ChevronDown,
-  Check
+  Check,
 } from "lucide-react";
 
 type LayoutMode = "4col" | "2col";
@@ -270,8 +271,49 @@ const ProjectsSection = () => {
             Loading projects...
           </div>
         ) : filteredProjects.length === 0 ? (
-          <div className="text-center text-muted-foreground py-20">
-            No projects found.
+          <div className="relative w-full min-h-[500px] md:min-h-[560px] flex items-center justify-center overflow-visible">
+            <div className="max-w-md text-left space-y-3 pr-4">
+              <span className="text-muted-foreground text-xs font-medium tracking-widest uppercase">
+                [ Showcase ]
+              </span>
+              <h3 className="text-2xl md:text-3xl font-medium text-foreground leading-tight">
+                Fresh work, dropping soon.
+              </h3>
+              <p className="text-muted-foreground text-sm md:text-base">
+                New case studies are being prepared. In the meantime, here's a glimpse of the disciplines I work across.
+              </p>
+            </div>
+            <div className="relative h-[420px] w-[420px] hidden md:block">
+              <CardSwap width={420} height={320} cardDistance={50} verticalDistance={60} delay={4000} pauseOnHover>
+                <SwapCard>
+                  <div className="h-full w-full p-6 flex flex-col justify-between">
+                    <span className="text-xs tracking-widest uppercase text-muted-foreground">[ 01 ]</span>
+                    <div>
+                      <h4 className="text-2xl font-medium text-foreground">Brand Identity</h4>
+                      <p className="text-sm text-muted-foreground mt-2">Logos, type systems, and visual language.</p>
+                    </div>
+                  </div>
+                </SwapCard>
+                <SwapCard>
+                  <div className="h-full w-full p-6 flex flex-col justify-between">
+                    <span className="text-xs tracking-widest uppercase text-muted-foreground">[ 02 ]</span>
+                    <div>
+                      <h4 className="text-2xl font-medium text-foreground">Motion & 3D</h4>
+                      <p className="text-sm text-muted-foreground mt-2">Animated stories and dimensional visuals.</p>
+                    </div>
+                  </div>
+                </SwapCard>
+                <SwapCard>
+                  <div className="h-full w-full p-6 flex flex-col justify-between">
+                    <span className="text-xs tracking-widest uppercase text-muted-foreground">[ 03 ]</span>
+                    <div>
+                      <h4 className="text-2xl font-medium text-foreground">Product & UI</h4>
+                      <p className="text-sm text-muted-foreground mt-2">Interfaces designed around real users.</p>
+                    </div>
+                  </div>
+                </SwapCard>
+              </CardSwap>
+            </div>
           </div>
         ) : (
           <div
