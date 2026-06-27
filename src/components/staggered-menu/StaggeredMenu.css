@@ -231,9 +231,12 @@
   letter-spacing: -2px;
   text-transform: uppercase;
   transition: color 0.25s;
-  display: inline-block;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
   text-decoration: none;
-  padding-right: 1.4em;
+  gap: 1rem;
   font-family: var(--font-sans);
 }
 
@@ -241,6 +244,19 @@
   display: inline-block;
   will-change: transform;
   transform-origin: 50% 100%;
+}
+
+.sm-panel-itemNumber {
+  flex: 0 0 auto;
+  margin-top: 0.1em;
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  font-weight: 400;
+  color: var(--sm-accent, hsl(var(--primary)));
+  letter-spacing: 0;
+  pointer-events: none;
+  user-select: none;
+  opacity: var(--sm-num-opacity, 0);
+  font-family: var(--font-mono);
 }
 
 .sm-panel-item:hover {
@@ -252,19 +268,7 @@
 }
 
 .sm-panel-list[data-numbering] .sm-panel-item::after {
-  counter-increment: smItem;
-  content: counter(smItem, decimal-leading-zero);
-  position: absolute;
-  top: 0.1em;
-  right: 2.8em;
-  font-size: 18px;
-  font-weight: 400;
-  color: var(--sm-accent, hsl(var(--primary)));
-  letter-spacing: 0;
-  pointer-events: none;
-  user-select: none;
-  opacity: var(--sm-num-opacity, 0);
-  font-family: var(--font-mono);
+  content: none;
 }
 
 @media (max-width: 640px) {
