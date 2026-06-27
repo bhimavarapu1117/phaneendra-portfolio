@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import ProjectCarousel from "./ProjectCarousel";
 import VariableProximity from "./variable-proximity/VariableProximity";
 import TiltedCard from "./tilted-card/TiltedCard";
-import phaneendraPhoto from "@/assets/phaneendra-photo.jpg.asset.json";
+import phaneendraPhoto from "@/assets/tilted-photo.jpg.asset.json";
 
 
 const HeroSection = () => {
