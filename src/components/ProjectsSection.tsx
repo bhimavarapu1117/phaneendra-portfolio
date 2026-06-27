@@ -3,16 +3,17 @@ import { Link } from "react-router-dom";
 import { useProjects } from "@/hooks/useProjects";
 import { cn } from "@/lib/utils";
 import { resolveImageUrl } from "@/lib/assetResolver";
-import { 
-  Grid2X2, 
-  Columns2, 
-  Sparkles, 
-  Box, 
-  Lightbulb, 
-  LayoutGrid, 
+import CardSwap, { Card as SwapCard } from "@/components/card-swap/CardSwap";
+import {
+  Grid2X2,
+  Columns2,
+  Sparkles,
+  Box,
+  Lightbulb,
+  LayoutGrid,
   Brush,
   ChevronDown,
-  Check
+  Check,
 } from "lucide-react";
 
 type LayoutMode = "4col" | "2col";
