@@ -13,14 +13,14 @@ import AdminDashboard from "./pages/admin/Dashboard";
 import ProjectForm from "./pages/admin/ProjectForm";
 import AdminRoute from "./components/AdminRoute";
 import SmoothCursor from "./components/SmoothCursor";
-import ShapeGridBackground from "./components/ShapeGridBackground";
+import PixelBlastBackground from "./components/PixelBlastBackground";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <ShapeGridBackground />
+      <PixelBlastBackground />
       <SmoothCursor />
       <Toaster />
       <Sonner />
