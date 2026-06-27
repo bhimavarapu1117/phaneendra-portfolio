@@ -401,6 +401,11 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                     }}
                   >
                     <span className="sm-panel-itemLabel">{it.label}</span>
+                    {displayItemNumbering && (
+                      <span className="sm-panel-itemNumber" aria-hidden="true">
+                        {String(idx + 1).padStart(2, "0")}
+                      </span>
+                    )}
                   </a>
                 </li>
               ))
