@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { useProjects } from "@/hooks/useProjects";
 import { cn } from "@/lib/utils";
 import { resolveImageUrl } from "@/lib/assetResolver";
-import CardSwap, { Card as SwapCard } from "@/components/card-swap/CardSwap";
+import { Card, CardContent, CardHeader, CardDescription, CardTitle, CardFooter } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import {
   Grid2X2,
   Columns2,
@@ -271,8 +272,8 @@ const ProjectsSection = () => {
             Loading projects...
           </div>
         ) : filteredProjects.length === 0 ? (
-          <div className="relative w-full min-h-[500px] md:min-h-[560px] flex items-center justify-center overflow-visible">
-            <div className="max-w-md text-left space-y-3 pr-4">
+          <div className="space-y-10">
+            <div className="max-w-2xl space-y-3">
               <span className="text-muted-foreground text-xs font-medium tracking-widest uppercase">
                 [ Showcase ]
               </span>
@@ -283,38 +284,65 @@ const ProjectsSection = () => {
                 New case studies are being prepared. In the meantime, here's a glimpse of the disciplines I work across.
               </p>
             </div>
-            <div className="relative h-[420px] w-[420px] hidden md:block">
-              <CardSwap width={420} height={320} cardDistance={50} verticalDistance={60} delay={4000} pauseOnHover>
-                <SwapCard>
-                  <div className="h-full w-full p-6 flex flex-col justify-between">
-                    <span className="text-xs tracking-widest uppercase text-muted-foreground">[ 01 ]</span>
-                    <div>
-                      <h4 className="text-2xl font-medium text-foreground">Brand Identity</h4>
-                      <p className="text-sm text-muted-foreground mt-2">Logos, type systems, and visual language.</p>
-                    </div>
-                  </div>
-                </SwapCard>
-                <SwapCard>
-                  <div className="h-full w-full p-6 flex flex-col justify-between">
-                    <span className="text-xs tracking-widest uppercase text-muted-foreground">[ 02 ]</span>
-                    <div>
-                      <h4 className="text-2xl font-medium text-foreground">Motion & 3D</h4>
-                      <p className="text-sm text-muted-foreground mt-2">Animated stories and dimensional visuals.</p>
-                    </div>
-                  </div>
-                </SwapCard>
-                <SwapCard>
-                  <div className="h-full w-full p-6 flex flex-col justify-between">
-                    <span className="text-xs tracking-widest uppercase text-muted-foreground">[ 03 ]</span>
-                    <div>
-                      <h4 className="text-2xl font-medium text-foreground">Product & UI</h4>
-                      <p className="text-sm text-muted-foreground mt-2">Interfaces designed around real users.</p>
-                    </div>
-                  </div>
-                </SwapCard>
-              </CardSwap>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  index: "01",
+                  title: "Brand Identity",
+                  description:
+                    "Logos, type systems, and visual language that turn a business into a recognisable presence with intent.",
+                  gradient:
+                    "bg-[radial-gradient(circle_at_30%_30%,hsl(var(--primary)/0.55),transparent_60%),radial-gradient(circle_at_70%_70%,hsl(var(--accent)/0.45),transparent_55%),linear-gradient(135deg,hsl(var(--secondary)),hsl(var(--muted)))]",
+                },
+                {
+                  index: "02",
+                  title: "Motion & 3D",
+                  description:
+                    "Animated stories and dimensional visuals — frames, loops, and renders crafted to move people, literally.",
+                  gradient:
+                    "bg-[radial-gradient(circle_at_20%_80%,hsl(var(--accent)/0.6),transparent_55%),radial-gradient(circle_at_80%_20%,hsl(var(--primary)/0.5),transparent_60%),linear-gradient(160deg,hsl(var(--muted)),hsl(var(--secondary)))]",
+                },
+                {
+                  index: "03",
+                  title: "Product & UI",
+                  description:
+                    "Interfaces designed around real users — clean structure, considered detail, and clarity at every step.",
+                  gradient:
+                    "bg-[radial-gradient(circle_at_50%_20%,hsl(var(--primary)/0.5),transparent_60%),radial-gradient(circle_at_50%_90%,hsl(var(--accent)/0.55),transparent_55%),linear-gradient(180deg,hsl(var(--secondary)),hsl(var(--muted)))]",
+                },
+              ].map((item) => (
+                <Card
+                  key={item.index}
+                  className="overflow-hidden rounded-none border-border bg-background/40 backdrop-blur-sm transition-colors hover:border-foreground/40"
+                >
+                  <CardHeader className="p-0">
+                    <div className={cn("h-44 w-full", item.gradient)} />
+                  </CardHeader>
+                  <CardContent className="pt-6 space-y-3">
+                    <span className="text-xs font-medium tracking-widest uppercase text-muted-foreground">
+                      [ {item.index} ]
+                    </span>
+                    <CardTitle className="text-xl font-medium text-foreground">
+                      {item.title}
+                    </CardTitle>
+                    <CardDescription className="text-sm leading-relaxed">
+                      {item.description}
+                    </CardDescription>
+                  </CardContent>
+                  <CardFooter className="flex items-center justify-between gap-2 pt-0">
+                    <Button variant="ghost" size="sm" className="rounded-none px-0 hover:bg-transparent hover:text-foreground">
+                      Explore More
+                    </Button>
+                    <Button variant="default" size="sm" className="rounded-none">
+                      View Work
+                    </Button>
+                  </CardFooter>
+                </Card>
+              ))}
             </div>
           </div>
+
         ) : (
           <div
             className={cn(
