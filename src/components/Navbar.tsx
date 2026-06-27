@@ -56,11 +56,9 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-start px-4 sm:px-6 md:px-12 lg:px-16 py-3 sm:py-4 transition-all duration-300 ${
-          isScrolled ? "bg-background/80 backdrop-blur-md" : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 z-50 flex items-center justify-start px-4 sm:px-6 md:px-12 lg:px-16 py-3 sm:py-4 transition-all duration-300 pointer-events-none`}
       >
-        <div className="relative z-[60] flex items-center gap-3">
+        <div className="relative z-[60] flex items-center gap-3 pointer-events-auto">
           <Toggle />
         </div>
       </nav>
