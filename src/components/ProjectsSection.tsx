@@ -334,10 +334,7 @@ const ProjectsSection = () => {
                       {item.description}
                     </CardDescription>
                   </CardContent>
-                  <CardFooter className="flex items-center justify-between gap-2 pt-0">
-                    <Button variant="ghost" size="sm" className="rounded-none px-0 hover:bg-transparent hover:text-foreground">
-                      Explore More
-                    </Button>
+                  <CardFooter className="flex items-center justify-end gap-2 pt-0">
                     {(item as any).href ? (
                       <Button asChild variant="default" size="sm" className="rounded-none">
                         <a href={(item as any).href} target="_blank" rel="noopener noreferrer">
