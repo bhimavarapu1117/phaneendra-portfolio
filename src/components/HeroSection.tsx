@@ -2,6 +2,9 @@ import { useRef } from "react";
 import Navbar from "./Navbar";
 import ProjectCarousel from "./ProjectCarousel";
 import VariableProximity from "./variable-proximity/VariableProximity";
+import TiltedCard from "./tilted-card/TiltedCard";
+import phaneendraPhoto from "@/assets/phaneendra-photo.jpg.asset.json";
+
 
 const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -15,7 +18,24 @@ const HeroSection = () => {
         ref={containerRef}
         className="relative z-10 h-full flex flex-col items-center justify-center px-6 md:px-16 pt-24 pb-24"
       >
+        <div className="mb-8 md:mb-10">
+          <TiltedCard
+            imageSrc={phaneendraPhoto.url}
+            altText="Phaneendra Reddy"
+            captionText="Phaneendra Reddy"
+            containerHeight="200px"
+            containerWidth="200px"
+            imageHeight="200px"
+            imageWidth="200px"
+            rotateAmplitude={14}
+            scaleOnHover={1.08}
+            showMobileWarning={false}
+            showTooltip
+          />
+        </div>
+
         <h1 className="max-w-6xl text-center">
+
           <VariableProximity
             label={"Design experiences people actually feel."}
             className="text-foreground text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight"
