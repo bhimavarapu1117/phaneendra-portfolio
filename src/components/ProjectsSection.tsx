@@ -306,7 +306,14 @@ const ProjectsSection = () => {
                   className="overflow-hidden rounded-none border-border bg-background/40 backdrop-blur-sm transition-colors hover:border-foreground/40"
                 >
                   <CardHeader className="p-0">
-                    <div className={cn("h-44 w-full", item.gradient)} />
+                    {(item as any).image ? (
+                      <div
+                        className="h-44 w-full bg-cover bg-center"
+                        style={{ backgroundImage: `url(${(item as any).image})` }}
+                      />
+                    ) : (
+                      <div className={cn("h-44 w-full", item.gradient)} />
+                    )}
                   </CardHeader>
                   <CardContent className="pt-6 space-y-3">
                     <span className="text-xs font-medium tracking-widest uppercase text-muted-foreground">
@@ -323,9 +330,17 @@ const ProjectsSection = () => {
                     <Button variant="ghost" size="sm" className="rounded-none px-0 hover:bg-transparent hover:text-foreground">
                       Explore More
                     </Button>
-                    <Button variant="default" size="sm" className="rounded-none">
-                      View Work
-                    </Button>
+                    {(item as any).href ? (
+                      <Button asChild variant="default" size="sm" className="rounded-none">
+                        <a href={(item as any).href} target="_blank" rel="noopener noreferrer">
+                          View Work
+                        </a>
+                      </Button>
+                    ) : (
+                      <Button variant="default" size="sm" className="rounded-none">
+                        View Work
+                      </Button>
+                    )}
                   </CardFooter>
                 </Card>
               ))}
