@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { useProjects } from "@/hooks/useProjects";
 import { cn } from "@/lib/utils";
 import { resolveImageUrl } from "@/lib/assetResolver";
-import CardSwap, { Card as SwapCard } from "@/components/card-swap/CardSwap";
+import { Card, CardContent, CardHeader, CardDescription, CardTitle, CardFooter } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import {
   Grid2X2,
   Columns2,
