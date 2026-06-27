@@ -281,8 +281,8 @@ const ProjectsSection = () => {
                   title: "Brand Identity",
                   description:
                     "Logos, type systems, and visual language that turn a business into a recognisable presence with intent.",
-                  gradient:
-                    "bg-[radial-gradient(circle_at_30%_30%,hsl(var(--primary)/0.55),transparent_60%),radial-gradient(circle_at_70%_70%,hsl(var(--accent)/0.45),transparent_55%),linear-gradient(135deg,hsl(var(--secondary)),hsl(var(--muted)))]",
+                  image: roadSafetyAsset.url,
+                  href: "https://www.behance.net/gallery/138242665/Road-safety-Advertising-campaign",
                 },
                 {
                   index: "02",
