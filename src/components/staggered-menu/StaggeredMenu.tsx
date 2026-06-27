@@ -236,9 +236,14 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       const btn = toggleBtnRef.current;
       if (!btn) return;
       colorTweenRef.current?.kill();
-      const { fg } = getThemeColors();
-      const closedColor = effectiveMenuButtonColor || fg;
-      const openColor = effectiveOpenMenuButtonColor || fg;
+      // Only override color when explicit props are provided; otherwise let CSS
+      // (hsl(var(--foreground))) drive theme-reactive coloring.
+      if (!effectiveMenuButtonColor && !effectiveOpenMenuButtonColor) {
+        gsap.set(btn, { clearProps: "color" });
+        return;
+      }
+      const closedColor = effectiveMenuButtonColor || "";
+      const openColor = effectiveOpenMenuButtonColor || effectiveMenuButtonColor || "";
       if (changeMenuColorOnOpen) {
         colorTweenRef.current = gsap.to(btn, {
           color: opening ? openColor : closedColor,
@@ -250,7 +255,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         gsap.set(btn, { color: closedColor });
       }
     },
-    [changeMenuColorOnOpen, effectiveMenuButtonColor, effectiveOpenMenuButtonColor, getThemeColors]
+    [changeMenuColorOnOpen, effectiveMenuButtonColor, effectiveOpenMenuButtonColor]
   );
 
   const animateText = useCallback((opening: boolean) => {
