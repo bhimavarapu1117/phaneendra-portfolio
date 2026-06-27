@@ -1,4 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import timeline1 from "@/assets/timeline-1.jpg";
+import timeline2 from "@/assets/timeline-2.jpg";
+import timeline3 from "@/assets/timeline-3.jpg";
+import timeline4 from "@/assets/timeline-4.jpg";
 
 type TimelineColumn = {
   step: string;
@@ -6,6 +10,7 @@ type TimelineColumn = {
   duration: string;
   /** Card height for staircase effect */
   cardHeight: string;
+  image: string;
 };
 
 const timelineColumns: TimelineColumn[] = [
@@ -13,25 +18,29 @@ const timelineColumns: TimelineColumn[] = [
     step: "01",
     title: "Foundation\nYear",
     duration: "[ 2018 · Bangalore University ]",
-    cardHeight: "min-h-[220px] lg:h-[280px]"
+    cardHeight: "min-h-[220px] lg:h-[280px]",
+    image: timeline1,
   },
   {
     step: "02",
     title: "Bachelor of\nVisual Art",
     duration: "[ 2018–2022 · Bangalore University ]",
-    cardHeight: "min-h-[220px] lg:h-[340px]"
+    cardHeight: "min-h-[220px] lg:h-[340px]",
+    image: timeline2,
   },
   {
     step: "03",
     title: "Joined\nCognizant",
     duration: "[ Sept 2022 · Visual Designer ]",
-    cardHeight: "min-h-[220px] lg:h-[400px]"
+    cardHeight: "min-h-[220px] lg:h-[400px]",
+    image: timeline3,
   },
   {
     step: "04",
     title: "Senior\nGraphic Designer",
     duration: "[ 2024–now · 3+ years experience ]",
-    cardHeight: "min-h-[220px] lg:h-[460px]"
+    cardHeight: "min-h-[220px] lg:h-[460px]",
+    image: timeline4,
   }
 ];
 
