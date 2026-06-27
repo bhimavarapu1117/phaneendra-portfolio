@@ -140,12 +140,26 @@ const TimelineSection = () => {
                 </div>
 
                 {/* Card panel - anchored to bottom, varying heights */}
-                <div className={`${col.cardHeight} bg-card/60 backdrop-blur-sm border-t-[3px] border-accent flex flex-col p-5 sm:p-6`}>
-                  <h3 className="font-sans text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight text-muted-foreground whitespace-pre-line leading-tight">
+                <div
+                  className={`${col.cardHeight} relative overflow-hidden bg-card/60 backdrop-blur-sm border-t-[3px] border-accent flex flex-col p-5 sm:p-6`}
+                >
+                  {/* Grayscale background image */}
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 bg-cover bg-center grayscale"
+                    style={{ backgroundImage: `url(${col.image})` }}
+                  />
+                  {/* Dark gradient overlay for readability */}
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/60 to-black/40"
+                  />
+
+                  <h3 className="relative font-sans text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight text-white whitespace-pre-line leading-tight drop-shadow-lg">
                     {col.title}
                   </h3>
 
-                  <p className="mt-auto font-mono text-sm text-muted-foreground max-w-[220px]">
+                  <p className="relative mt-auto font-mono text-sm text-white/80 max-w-[220px]">
                     {col.duration}
                   </p>
                 </div>
