@@ -149,8 +149,8 @@ const TimelineSection = () => {
                   {/* Grayscale background image */}
                   <div
                     aria-hidden
-                    className="absolute inset-0 bg-cover bg-center grayscale"
-                    style={{ backgroundImage: `url(${col.image})` }}
+                    className="absolute inset-0 bg-cover bg-no-repeat grayscale"
+                    style={{ backgroundImage: `url(${col.image})`, backgroundPosition: col.bgPosition ?? "center" }}
                   />
                   {/* Dark gradient overlay for readability */}
                   <div
