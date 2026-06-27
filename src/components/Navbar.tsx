@@ -44,7 +44,7 @@ const Navbar = () => {
     { label: "Home", link: "/", ariaLabel: "Home", onClick: (e) => { e.preventDefault(); handleMenuNav("/"); } },
     { label: "Projects", link: "/#projects", ariaLabel: "Projects", onClick: (e) => { e.preventDefault(); handleMenuNav("/#projects"); } },
     { label: "About", link: "/#about", ariaLabel: "About", onClick: (e) => { e.preventDefault(); handleMenuNav("/#about"); } },
-    { label: "Contact", link: "/#contact", ariaLabel: "Contact", onClick: (e) => { e.preventDefault(); handleMenuNav("/#contact"); } },
+    { label: "Contact", link: "/#contact-form", ariaLabel: "Contact", onClick: (e) => { e.preventDefault(); handleMenuNav("/#contact-form"); } },
   ];
 
   const socialItems = [
