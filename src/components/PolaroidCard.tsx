@@ -27,7 +27,7 @@ const PolaroidCard = ({
     <div 
       className={cn(
         "relative bg-[#d4d4d4] p-3 shadow-2xl",
-        showCaption ? "pb-16" : "pb-3",
+        showCaption && name ? "pb-16" : "pb-3",
         "w-[240px] sm:w-[280px] md:w-[340px] max-w-[80vw]",
         className
       )}
@@ -43,11 +43,11 @@ const PolaroidCard = ({
         />
       </div>
       
-      {/* Caption area - only shown if showCaption is true */}
-      {showCaption && name && subtitle && (
+      {/* Caption area - shown when name is provided */}
+      {showCaption && name && (
         <div className="absolute bottom-3 left-3 right-3">
           <h3 className="text-lg md:text-xl font-semibold text-[#1a1a1a]">{name}</h3>
-          <p className="text-sm text-[#666666]">{subtitle}</p>
+          {subtitle && <p className="text-sm text-[#666666]">{subtitle}</p>}
         </div>
       )}
     </div>
