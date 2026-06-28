@@ -6,7 +6,6 @@ import TimelineSection from "@/components/TimelineSection";
 import ResumeSection from "@/components/ResumeSection";
 
 import ContactSection from "@/components/ContactSection";
-import ContactFormSection from "@/components/ContactFormSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -20,7 +19,6 @@ const Index = () => {
       <ResumeSection />
 
       <ContactSection />
-      <ContactFormSection />
       <Footer />
     </main>
   );
