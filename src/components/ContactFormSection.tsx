@@ -29,7 +29,7 @@ const socialLinks = [
 
 const ContactFormSection = () => {
   return (
-    <section id="contact-form" className="bg-background py-12 sm:py-16 md:py-24 px-3 sm:px-4 md:px-6 border-t border-border">
+    <section id="contact-form" className="bg-background py-16 md:py-24 px-6 md:px-12 lg:px-20 border-t border-border">
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
         <div className="mb-10 md:mb-14">
