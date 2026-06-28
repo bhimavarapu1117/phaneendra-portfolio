@@ -148,22 +148,25 @@ const AboutSection = () => {
           </h2>
         </div>
 
-        {/* Card stack - centered */}
-        <div className="flex-1 flex items-center justify-center w-full">
-          <div className="relative w-[240px] sm:w-[280px] md:w-[340px] h-[320px] sm:h-[360px] md:h-[440px] max-w-[80vw]">
-            {cards.map((card, index) => (
-              <div 
-                key={card.id} 
-                className="absolute inset-0 flex items-center justify-center"
-                style={getCardStyle(index)}
-              >
-                <PolaroidCard 
-                  image={card.image} 
-                  name={card.showCaption ? card.name : undefined}
-                  showCaption={card.showCaption}
-                />
-              </div>
-            ))}
+        {/* Card stack wrapper - clips overflow during sticky phase */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-[-1]">
+          {/* Card stack - centered within wrapper */}
+          <div className="flex items-center justify-center w-full h-full">
+            <div className="relative w-[240px] sm:w-[280px] md:w-[340px] h-[320px] sm:h-[360px] md:h-[440px] max-w-[80vw]">
+              {cards.map((card, index) => (
+                <div 
+                  key={card.id} 
+                  className="absolute inset-0 flex items-center justify-center"
+                  style={getCardStyle(index)}
+                >
+                  <PolaroidCard 
+                    image={card.image} 
+                    name={card.showCaption ? card.name : undefined}
+                    showCaption={card.showCaption}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
