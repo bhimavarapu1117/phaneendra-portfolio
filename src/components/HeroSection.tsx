@@ -11,12 +11,12 @@ const HeroSection = () => {
 
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-transparent">
+    <section className="relative min-h-screen w-full overflow-hidden bg-transparent">
       <Navbar />
 
       <div
         ref={containerRef}
-        className="relative z-10 h-full flex flex-col items-center justify-center px-6 md:px-16 pt-24 pb-24"
+        className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 md:px-16 pt-32 md:pt-28 pb-24"
       >
         <div className="mb-8 md:mb-10">
           <TiltedCard
