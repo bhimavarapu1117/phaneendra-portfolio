@@ -21,8 +21,7 @@ const ResumeSection = () => {
         </span>
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed max-w-4xl text-foreground">
           A snapshot of my professional journey, skills, experience, and
-          creative achievements. Download my resume to learn more about my
-          background and expertise.
+          creative achievements.{"\u00a0"}
         </h2>
       </div>
 
