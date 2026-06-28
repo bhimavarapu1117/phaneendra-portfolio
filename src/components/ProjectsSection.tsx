@@ -112,7 +112,7 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="relative z-50 min-h-screen mt-6 md:mt-10 pt-32 md:pt-40 pb-24 px-6 md:px-12 lg:px-20 bg-card">
+    <section id="projects" className="relative z-50 min-h-screen pt-40 md:pt-52 pb-24 px-6 md:px-12 lg:px-20 bg-card">
       {/* Section Header */}
       <div className="max-w-7xl mx-auto mb-16">
         <span className="text-muted-foreground text-sm font-medium tracking-wide mb-6 block">
