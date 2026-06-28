@@ -16,7 +16,7 @@ const darkenColor = (hex, percent) => {
   return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
 };
 
-const Folder = ({ color = '#5227FF', size = 1, items = [], className = '' }) => {
+const Folder = ({ color = '#5227FF', size = 1, items = [], className = '', hoverOnly = false }) => {
   const maxItems = 3;
   const papers = items.slice(0, maxItems);
   while (papers.length < maxItems) papers.push(null);
@@ -32,6 +32,7 @@ const Folder = ({ color = '#5227FF', size = 1, items = [], className = '' }) => 
   const paper3 = '#ffffff';
 
   const handleClick = () => {
+    if (hoverOnly) return;
     setOpen(prev => !prev);
     if (open) {
       setPaperOffsets(Array.from({ length: maxItems }, () => ({ x: 0, y: 0 })));
@@ -71,19 +72,19 @@ const Folder = ({ color = '#5227FF', size = 1, items = [], className = '' }) => 
   return (
     <div style={{ transform: `scale(${size})` }} className={className}>
       <div
-        className={`folder ${open ? 'open' : ''}`.trim()}
+        className={`folder ${open ? 'open' : ''} ${hoverOnly ? 'folder--hover-only' : ''}`.trim()}
         style={folderStyle}
-        onClick={handleClick}
-        onKeyDown={e => {
+        onClick={hoverOnly ? undefined : handleClick}
+        onKeyDown={hoverOnly ? undefined : e => {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             handleClick();
           }
         }}
-        tabIndex={0}
-        role="button"
-        aria-expanded={open}
-        aria-label={open ? 'Close folder' : 'Open folder'}
+        tabIndex={hoverOnly ? -1 : 0}
+        role={hoverOnly ? undefined : 'button'}
+        aria-expanded={hoverOnly ? undefined : open}
+        aria-label={hoverOnly ? undefined : (open ? 'Close folder' : 'Open folder')}
       >
         <div className="folder__back">
           {papers.map((item, i) => (

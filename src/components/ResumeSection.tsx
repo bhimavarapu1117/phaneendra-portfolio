@@ -28,7 +28,7 @@ const ResumeSection = () => {
       <div className="max-w-7xl mx-auto flex flex-col items-center justify-center gap-12 py-12">
         {/* Folder with centered "Resume" text */}
         <div className="relative inline-flex items-center justify-center">
-          <Folder size={2} color={folderColor} />
+          <Folder size={2} color={folderColor} hoverOnly />
           <span
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 flex items-center justify-center text-2xl md:text-3xl font-semibold tracking-tight"
