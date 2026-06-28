@@ -17,11 +17,11 @@ const ResumeSection = () => {
       id="resume"
       className="pt-20 md:pt-24 pb-16 md:pb-20 px-6 md:px-12 lg:px-20 bg-background border-b border-border"
     >
-      <div className="max-w-7xl mx-auto mb-16 md:mb-20">
+      <div className="max-w-4xl mx-auto mb-12 md:mb-16 text-center">
         <span className="text-muted-foreground text-sm font-medium tracking-wide mb-6 block">
           [ Resume ]
         </span>
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed max-w-4xl text-foreground">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed text-foreground">
           A snapshot of my professional journey, skills, experience, and
           creative achievements.
         </h2>
