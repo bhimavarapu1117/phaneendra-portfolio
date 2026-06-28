@@ -1,5 +1,6 @@
 import { useState, useMemo, useRef, useEffect } from "react";
 import roadSafetyAsset from "@/assets/road-safety.png.asset.json";
+import olympicIconsAsset from "@/assets/olympic-icons.png.asset.json";
 import { Link } from "react-router-dom";
 import { useProjects } from "@/hooks/useProjects";
 import { cn } from "@/lib/utils";
@@ -286,11 +287,11 @@ const ProjectsSection = () => {
                 },
                 {
                   index: "02",
-                  title: "Motion & 3D",
+                  title: "2D Game Design",
                   description:
-                    "Animated stories and dimensional visuals — frames, loops, and renders crafted to move people, literally.",
-                  gradient:
-                    "bg-[radial-gradient(circle_at_20%_80%,hsl(var(--accent)/0.6),transparent_55%),radial-gradient(circle_at_80%_20%,hsl(var(--primary)/0.5),transparent_60%),linear-gradient(160deg,hsl(var(--muted)),hsl(var(--secondary)))]",
+                    "Designing engaging 2D game assets, icons, UI elements to deliver immersive gaming experiences.",
+                  image: olympicIconsAsset.url,
+                  href: "https://www.behance.net/gallery/124915149/OLYMPIC-GAMES-ICONS",
                 },
                 {
                   index: "03",
