@@ -16,7 +16,7 @@ const HeroSection = () => {
 
       <div
         ref={containerRef}
-        className="relative z-10 h-full flex flex-col items-center justify-center px-6 md:px-16 pt-24 pb-[360px] sm:pb-[380px] md:pb-[440px]"
+        className="relative z-10 h-full flex flex-col items-center justify-center px-6 md:px-16 pt-24 pb-24"
       >
         <div className="mb-8 md:mb-10">
           <TiltedCard
