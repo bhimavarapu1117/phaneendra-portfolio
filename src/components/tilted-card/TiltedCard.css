@@ -37,7 +37,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  object-fit: cover;
+  object-fit: contain;
   will-change: transform;
   transform: translateZ(0);
   border: 1px solid hsl(var(--border));
