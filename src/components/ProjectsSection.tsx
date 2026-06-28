@@ -1,8 +1,7 @@
 import { useState, useMemo, useRef, useEffect } from "react";
-import { useTheme } from "next-themes";
-import Folder from "@/components/folder/Folder";
 import roadSafetyAsset from "@/assets/road-safety.png.asset.json";
 import olympicIconsAsset from "@/assets/olympic-icons.png.asset.json";
+
 import { Link } from "react-router-dom";
 import { useProjects } from "@/hooks/useProjects";
 import { cn } from "@/lib/utils";
