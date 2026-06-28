@@ -122,7 +122,7 @@ const AboutSection = () => {
     <section 
       id="about"
       ref={sectionRef} 
-      className="relative bg-background" 
+      className="relative z-0 bg-background" 
       style={{ height: "350vh" }}
     >
       {/* Decorative grid lines - hidden on mobile */}
@@ -134,7 +134,7 @@ const AboutSection = () => {
       </div>
 
       {/* Sticky content container */}
-      <div className="sticky top-0 h-screen flex flex-col items-center overflow-hidden">
+      <div className="sticky top-0 h-screen flex flex-col items-center overflow-hidden -z-10" style={{ clipPath: "inset(0)" }}>
         {/* Text content */}
         <div className="text-center px-6 pt-16 md:pt-24 mb-8 md:mb-12">
           <span className="text-muted-foreground text-sm md:text-base mb-4 block">

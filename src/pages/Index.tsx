@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <main className="relative">
+    <main className="relative isolate">
       <ScrollDebugOverlay />
       <HeroSection />
       <AboutSection />
