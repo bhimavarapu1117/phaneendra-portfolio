@@ -319,12 +319,39 @@ const ProjectsSection = () => {
                       {item.description}
                     </CardDescription>
                   </CardContent>
-                  <CardFooter className="flex items-center justify-end gap-2 pt-0">
-                    <Button asChild variant="default" size="sm" className="rounded-none">
-                      <a href={item.href} target="_blank" rel="noopener noreferrer">
-                        View Work
-                      </a>
-                    </Button>
+                  <CardFooter className="flex flex-col items-stretch gap-6 pt-0">
+                    <div className="flex items-center justify-end">
+                      <Button asChild variant="default" size="sm" className="rounded-none">
+                        <a href={item.href} target="_blank" rel="noopener noreferrer">
+                          View Work
+                        </a>
+                      </Button>
+                    </div>
+                    {item.title === "2D Game Design" && (
+                      <div className="flex flex-col items-center gap-3 pt-6 border-t border-border">
+                        <div className="flex items-center justify-center min-h-[140px]">
+                          <Folder
+                            size={1}
+                            color={folderColor}
+                            items={[
+                              <a
+                                key="r1"
+                                href="https://phaneendrareddy-design-8x3lub3.gamma.site/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="block w-full h-full"
+                                onClick={(e) => e.stopPropagation()}
+                              />,
+                              null,
+                              null,
+                            ]}
+                          />
+                        </div>
+                        <span className="text-xs font-medium tracking-widest uppercase text-muted-foreground">
+                          Resume
+                        </span>
+                      </div>
+                    )}
                   </CardFooter>
                 </Card>
               ))}
