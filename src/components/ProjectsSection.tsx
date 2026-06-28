@@ -299,14 +299,10 @@ const ProjectsSection = () => {
                   className="overflow-hidden rounded-none border-border bg-background/40 backdrop-blur-sm transition-colors hover:border-foreground/40"
                 >
                   <CardHeader className="p-0">
-                    {(item as any).image ? (
-                      <div
-                        className="h-44 w-full bg-cover bg-center"
-                        style={{ backgroundImage: `url(${(item as any).image})` }}
-                      />
-                    ) : (
-                      <div className={cn("h-44 w-full", item.gradient)} />
-                    )}
+                    <div
+                      className="h-44 w-full bg-cover bg-center"
+                      style={{ backgroundImage: `url(${item.image})` }}
+                    />
                   </CardHeader>
                   <CardContent className="pt-6 space-y-3">
                     <span className="text-xs font-medium tracking-widest uppercase text-muted-foreground">
@@ -320,17 +316,11 @@ const ProjectsSection = () => {
                     </CardDescription>
                   </CardContent>
                   <CardFooter className="flex items-center justify-end gap-2 pt-0">
-                    {(item as any).href ? (
-                      <Button asChild variant="default" size="sm" className="rounded-none">
-                        <a href={(item as any).href} target="_blank" rel="noopener noreferrer">
-                          View Work
-                        </a>
-                      </Button>
-                    ) : (
-                      <Button variant="default" size="sm" className="rounded-none">
+                    <Button asChild variant="default" size="sm" className="rounded-none">
+                      <a href={item.href} target="_blank" rel="noopener noreferrer">
                         View Work
-                      </Button>
-                    )}
+                      </a>
+                    </Button>
                   </CardFooter>
                 </Card>
               ))}
