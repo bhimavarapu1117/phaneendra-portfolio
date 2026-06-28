@@ -17,7 +17,7 @@ const ResumeSection = () => {
       id="resume"
       className="pt-20 md:pt-24 pb-16 md:pb-20 px-6 md:px-12 lg:px-20 bg-background border-b border-border"
     >
-      <div className="max-w-7xl mx-auto mb-10 md:mb-14">
+      <div className="max-w-7xl mx-auto mb-16 md:mb-20">
         <span className="text-muted-foreground text-sm font-medium tracking-wide mb-6 block">
           [ Resume ]
         </span>
@@ -27,7 +27,7 @@ const ResumeSection = () => {
         </h2>
       </div>
 
-      <div className="max-w-7xl mx-auto flex flex-col items-center justify-center gap-10 md:gap-12 pt-4 pb-2">
+      <div className="max-w-7xl mx-auto flex flex-col items-center justify-center gap-14 md:gap-12 pt-8 md:pt-4 pb-2">
         {/* Folder with centered "Resume" text */}
         <div className="relative inline-flex items-center justify-center">
           <Folder size={2} color={folderColor} hoverOnly />
