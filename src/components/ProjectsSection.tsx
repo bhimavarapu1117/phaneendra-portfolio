@@ -293,22 +293,6 @@ const ProjectsSection = () => {
                   image: olympicIconsAsset.url,
                   href: "https://www.behance.net/gallery/124915149/OLYMPIC-GAMES-ICONS",
                 },
-                {
-                  index: "03",
-                  title: "Product & UI",
-                  description:
-                    "Interfaces designed around real users — clean structure, considered detail, and clarity at every step.",
-                  gradient:
-                    "bg-[radial-gradient(circle_at_50%_20%,hsl(var(--primary)/0.5),transparent_60%),radial-gradient(circle_at_50%_90%,hsl(var(--accent)/0.55),transparent_55%),linear-gradient(180deg,hsl(var(--secondary)),hsl(var(--muted)))]",
-                },
-                {
-                  index: "04",
-                  title: "Freelancing",
-                  description:
-                    "Independent commissions and client partnerships — from concept to delivery, shaping design work that fits real briefs and tighter timelines.",
-                  gradient:
-                    "bg-[radial-gradient(circle_at_50%_50%,hsl(var(--accent)/0.5),transparent_60%),linear-gradient(135deg,hsl(var(--muted)),hsl(var(--secondary)))]",
-                },
               ].map((item) => (
                 <Card
                   key={item.index}
