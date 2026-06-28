@@ -2,8 +2,10 @@ import { useTheme } from "next-themes";
 import { ArrowDownIcon } from "lucide-react";
 import Folder from "@/components/folder/Folder";
 import { CraftButton, CraftButtonIcon, CraftButtonLabel } from "@/components/ui/craft-button";
+import resumeAsset from "@/assets/resume.pdf.asset.json";
 
-const RESUME_URL = "https://phaneendrareddy-design-8x3lub3.gamma.site/";
+const RESUME_URL = resumeAsset.url;
+const RESUME_FILENAME = "Resume_Bhimavarapu.pdf";
 
 const ResumeSection = () => {
   const { resolvedTheme } = useTheme();
