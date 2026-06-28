@@ -13,7 +13,7 @@ const ResumeSection = () => {
   return (
     <section
       id="resume"
-      className="min-h-screen py-24 px-6 md:px-12 lg:px-20 bg-background"
+      className="min-h-screen pt-24 pb-12 px-6 md:px-12 lg:px-20 bg-background border-b border-border"
     >
       <div className="max-w-7xl mx-auto mb-16">
         <span className="text-muted-foreground text-sm font-medium tracking-wide mb-6 block">
