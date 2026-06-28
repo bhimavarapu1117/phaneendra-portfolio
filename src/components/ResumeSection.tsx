@@ -44,9 +44,8 @@ const ResumeSection = () => {
         <CraftButton asChild>
           <a
             href={RESUME_URL}
-            target="_blank"
+            download={RESUME_FILENAME}
             rel="noopener noreferrer"
-            download
           >
             <CraftButtonLabel>Download Resume</CraftButtonLabel>
             <CraftButtonIcon>
