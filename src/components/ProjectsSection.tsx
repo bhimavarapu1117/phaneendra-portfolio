@@ -327,31 +327,6 @@ const ProjectsSection = () => {
                         </a>
                       </Button>
                     </div>
-                    {item.title === "2D Game Design" && (
-                      <div className="flex flex-col items-center gap-3 pt-6 border-t border-border">
-                        <div className="flex items-center justify-center min-h-[140px]">
-                          <Folder
-                            size={1}
-                            color={folderColor}
-                            items={[
-                              <a
-                                key="r1"
-                                href="https://phaneendrareddy-design-8x3lub3.gamma.site/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block w-full h-full"
-                                onClick={(e) => e.stopPropagation()}
-                              />,
-                              null,
-                              null,
-                            ]}
-                          />
-                        </div>
-                        <span className="text-xs font-medium tracking-widest uppercase text-muted-foreground">
-                          Resume
-                        </span>
-                      </div>
-                    )}
                   </CardFooter>
                 </Card>
               ))}
