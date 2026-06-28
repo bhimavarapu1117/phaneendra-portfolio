@@ -122,7 +122,7 @@ const AboutSection = () => {
     <section 
       id="about"
       ref={sectionRef} 
-      className="relative bg-background" 
+      className="relative bg-background overflow-hidden" 
       style={{ height: "350vh" }}
     >
       {/* Decorative grid lines - hidden on mobile */}
