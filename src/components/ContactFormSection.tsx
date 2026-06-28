@@ -41,7 +41,7 @@ const ContactFormSection = () => {
               Want to know more about me? Whether you have a question, an idea, or just want to say hello, I'd love to hear from you.
             </p>
             <p className="mt-2 text-sm sm:text-base text-muted-foreground leading-relaxed">
-              Feel free to reach out through the contact form below, and I'll get back to you as soon as possible. Let's connect and create something amazing together!
+              Reach out anytime through the channels below — let's connect and create something amazing together.
             </p>
           </div>
         </div>
