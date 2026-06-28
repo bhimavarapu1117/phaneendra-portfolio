@@ -39,7 +39,7 @@ export const Toggle = ({ className }: ToggleProps) => {
 
       // Squash and spin the icon
       tl.to(icon, { scale: 0.75, duration: 0.15, ease: "power2.in" }, 0);
-      tl.to(icon, { rotate: 180, duration: 0.55, ease: "power4.out" }, 0);
+      tl.to(icon, { rotate: 360, duration: 0.55, ease: "power4.out" }, 0);
       // Flip theme at the midpoint of the spin
       tl.call(() => setTheme(nextTheme), [], 0.28);
       // Pop back into place
