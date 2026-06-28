@@ -43,6 +43,8 @@ const sortOptions = [
 
 const ProjectsSection = () => {
   const { data: projects, isLoading } = useProjects();
+  const { resolvedTheme } = useTheme();
+  const folderColor = resolvedTheme === "light" ? "#1a1a1a" : "#e5e5e5";
   const [layoutMode, setLayoutMode] = useState<LayoutMode>("4col");
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [sortMode, setSortMode] = useState<SortMode>("newest");
