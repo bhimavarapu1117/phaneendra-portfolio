@@ -154,7 +154,7 @@ const AboutSection = () => {
             {cards.map((card, index) => (
               <div 
                 key={card.id} 
-                className="absolute inset-0 flex items-center justify-center"
+                className="absolute inset-0 flex items-center justify-center hidden"
                 style={getCardStyle(index)}
               >
                 <PolaroidCard 
