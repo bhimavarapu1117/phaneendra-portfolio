@@ -12,7 +12,6 @@ import AdminRegister from "./pages/admin/Register";
 import AdminDashboard from "./pages/admin/Dashboard";
 import ProjectForm from "./pages/admin/ProjectForm";
 import AdminRoute from "./components/AdminRoute";
-import SmoothCursor from "./components/SmoothCursor";
 import PixelBlastBackground from "./components/PixelBlastBackground";
 import PageLoader from "./components/PageLoader";
 
@@ -23,7 +22,6 @@ const App = () => (
     <TooltipProvider>
       <PageLoader />
       <PixelBlastBackground />
-      <SmoothCursor />
       <Toaster />
       <Sonner />
       <BrowserRouter
