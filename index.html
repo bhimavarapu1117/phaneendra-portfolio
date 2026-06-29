@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark" style="background:#0a0a0a;color-scheme:dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,8 +27,11 @@
   <meta name="twitter:description" content="A portfolio for modern creators. Showcase your work, designs, and creative projects beautifully.">
 </head>
 
-  <body>
+  <body style="background:#0a0a0a">
     <div id="root"></div>
+    <script>
+      (function(){try{var t=localStorage.getItem('theme');var d=t?t==='dark':true;var r=document.documentElement;r.classList.toggle('dark',d);r.style.background=d?'#0a0a0a':'#fafafa';r.style.colorScheme=d?'dark':'light';document.body&&(document.body.style.background=d?'#0a0a0a':'#fafafa');}catch(e){}})();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
