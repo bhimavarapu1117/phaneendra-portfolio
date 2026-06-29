@@ -6,12 +6,12 @@ const PageLoader = () => {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const minDelay = new Promise((r) => setTimeout(r, 600));
+    const minDelay = new Promise((r) => setTimeout(r, 250));
     const ready =
-      document.readyState === "complete"
+      document.readyState !== "loading"
         ? Promise.resolve()
         : new Promise<void>((r) =>
-            window.addEventListener("load", () => r(), { once: true })
+            window.addEventListener("DOMContentLoaded", () => r(), { once: true })
           );
     Promise.all([minDelay, ready]).then(() => setVisible(false));
   }, []);
