@@ -1,177 +1,231 @@
-import { useEffect, useRef, useState } from "react";
-import { useTheme } from "next-themes";
+"use client";
 
-/**
- * Liquid Glass cursor — Apple-inspired circular cursor with frosted
- * backdrop blur, soft refraction highlight, and smooth eased motion.
- * Over text/interactive elements, it expands into a wider pill-shaped
- * glass capsule for a tactile, premium feel. Disabled on touch devices.
- */
-const SmoothCursor = () => {
-  const { resolvedTheme } = useTheme();
-  const glassRef = useRef<HTMLDivElement | null>(null);
-  const dotRef = useRef<HTMLDivElement | null>(null);
-  const target = useRef({ x: -100, y: -100 });
-  const pos = useRef({ x: -100, y: -100 });
-  const [enabled, setEnabled] = useState(false);
-  const [mode, setMode] = useState<"idle" | "text" | "interactive">("idle");
-  const [pressed, setPressed] = useState(false);
+import { FC, useEffect, useRef, useState } from "react";
+import { motion, useSpring } from "framer-motion";
 
-  useEffect(() => {
-    const isTouch = window.matchMedia("(pointer: coarse)").matches;
-    if (isTouch) return;
-    setEnabled(true);
+interface Position {
+  x: number;
+  y: number;
+}
 
-    const onMove = (e: MouseEvent) => {
-      target.current.x = e.clientX;
-      target.current.y = e.clientY;
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
-      }
-      const el = e.target as HTMLElement | null;
-      const interactive = !!el?.closest(
-        'a, button, [role="button"], input[type="button"], input[type="submit"], select, [data-cursor="hover"]'
-      );
-      const textual = !interactive && !!el?.closest(
-        'p, h1, h2, h3, h4, h5, h6, span, li, blockquote, label, input[type="text"], input[type="email"], input:not([type]), textarea, [data-cursor="text"]'
-      );
-      setMode(interactive ? "interactive" : textual ? "text" : "idle");
-    };
+export interface SmoothCursorProps {
+  cursor?: React.ReactNode;
+  springConfig?: {
+    damping: number;
+    stiffness: number;
+    mass: number;
+    restDelta: number;
+  };
+}
 
-    const onDown = () => setPressed(true);
-    const onUp = () => setPressed(false);
+const DESKTOP_POINTER_QUERY = "(any-hover: hover) and (any-pointer: fine)";
 
-    let raf = 0;
-    const tick = () => {
-      pos.current.x += (target.current.x - pos.current.x) * 0.22;
-      pos.current.y += (target.current.y - pos.current.y) * 0.22;
-      if (glassRef.current) {
-        glassRef.current.style.transform = `translate3d(${pos.current.x}px, ${pos.current.y}px, 0) translate(-50%, -50%)`;
-      }
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
+function isTrackablePointer(pointerType: string) {
+  return pointerType !== "touch";
+}
 
-    window.addEventListener("mousemove", onMove, { passive: true });
-    window.addEventListener("mousedown", onDown, { passive: true });
-    window.addEventListener("mouseup", onUp, { passive: true });
-    return () => {
-      window.removeEventListener("mousemove", onMove);
-      window.removeEventListener("mousedown", onDown);
-      window.removeEventListener("mouseup", onUp);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
-
-  if (!enabled) return null;
-
-  const isLight = resolvedTheme === "light";
-
-  // Size & shape per mode
-  const sizes =
-    mode === "interactive"
-      ? { w: 56, h: 56, r: 28 }
-      : mode === "text"
-      ? { w: 6, h: 28, r: 3 }
-      : { w: 30, h: 30, r: 15 };
-
-  const scale = pressed ? 0.88 : 1;
-
-  const glassBg = isLight
-    ? "linear-gradient(135deg, rgba(255,255,255,0.55), rgba(255,255,255,0.22))"
-    : "linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0.04))";
-  const glassBorder = isLight ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.22)";
-  const glassShadow = isLight
-    ? "0 6px 20px -6px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.9), inset 0 -1px 0 rgba(0,0,0,0.06)"
-    : "0 8px 24px -6px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -1px 0 rgba(0,0,0,0.35)";
-  const dotColor = isLight ? "rgba(0,0,0,0.85)" : "rgba(255,255,255,0.95)";
-  const showDot = mode !== "text";
-
+const DefaultCursorSVG: FC = () => {
   return (
-    <>
-      <style>{`html, body, *, *::before, *::after { cursor: none !important; }`}</style>
-      <div
-        ref={glassRef}
-        aria-hidden
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: sizes.w,
-          height: sizes.h,
-          borderRadius: sizes.r,
-          background: glassBg,
-          border: `1px solid ${glassBorder}`,
-          boxShadow: glassShadow,
-          backdropFilter: "blur(10px) saturate(180%)",
-          WebkitBackdropFilter: "blur(10px) saturate(180%)",
-          pointerEvents: "none",
-          zIndex: 2147483647,
-          willChange: "transform, width, height, border-radius",
-          transition:
-            "width 260ms cubic-bezier(.22,1,.36,1), height 260ms cubic-bezier(.22,1,.36,1), border-radius 260ms cubic-bezier(.22,1,.36,1), background 200ms ease, box-shadow 200ms ease",
-          transformOrigin: "center",
-        }}
-      >
-        {/* Inner highlight for refraction feel */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            borderRadius: "inherit",
-            background:
-              "radial-gradient(60% 50% at 30% 25%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 60%)",
-            opacity: isLight ? 0.9 : 0.5,
-            pointerEvents: "none",
-          }}
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={50}
+      height={54}
+      viewBox="0 0 50 54"
+      fill="none"
+      style={{ scale: 0.5 }}
+    >
+      <g filter="url(#filter0_d_91_7928)">
+        <path
+          d="M42.6817 41.1495L27.5103 6.79925C26.7269 5.02557 24.2082 5.02558 23.3927 6.79925L7.59814 41.1495C6.75833 42.9759 8.52712 44.8902 10.4125 44.1954L24.3757 39.0496C24.8829 38.8627 25.4385 38.8627 25.9422 39.0496L39.8121 44.1954C41.6849 44.8902 43.4884 42.9759 42.6817 41.1495Z"
+          fill="black"
         />
-        <div
-          style={{
-            position: "absolute",
-            left: 0,
-            right: 0,
-            bottom: 0,
-            height: "45%",
-            borderRadius: "inherit",
-            background:
-              "radial-gradient(70% 100% at 70% 100%, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 70%)",
-            opacity: isLight ? 0.6 : 0.4,
-            pointerEvents: "none",
-          }}
+        <path
+          d="M43.7146 40.6933L28.5431 6.34306C27.3556 3.65428 23.5772 3.69516 22.3668 6.32755L6.57226 40.6778C5.3134 43.4156 7.97238 46.298 10.803 45.2549L24.7662 40.109C25.0221 40.0147 25.2999 40.0156 25.5494 40.1082L39.4193 45.254C42.2261 46.2953 44.9254 43.4347 43.7146 40.6933Z"
+          stroke="white"
+          strokeWidth={2.25825}
         />
-        {/* Press scale wrapper via outer transform combine */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            transform: `scale(${scale})`,
-            transition: "transform 140ms ease",
-            borderRadius: "inherit",
-          }}
-        />
-      </div>
-      {showDot && (
-        <div
-          ref={dotRef}
-          aria-hidden
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: 4,
-            height: 4,
-            borderRadius: "50%",
-            background: dotColor,
-            pointerEvents: "none",
-            zIndex: 2147483647,
-            willChange: "transform",
-            opacity: mode === "interactive" ? 0 : 1,
-            transition: "opacity 180ms ease",
-          }}
-        />
-      )}
-    </>
+      </g>
+      <defs>
+        <filter
+          id="filter0_d_91_7928"
+          x={0.602397}
+          y={0.952444}
+          width={49.0584}
+          height={52.428}
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity={0} result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy={2.25825} />
+          <feGaussianBlur stdDeviation={2.25825} />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow_91_7928"
+          />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect1_dropShadow_91_7928"
+            result="shape"
+          />
+        </filter>
+      </defs>
+    </svg>
   );
 };
+
+export function SmoothCursor({
+  cursor = <DefaultCursorSVG />,
+  springConfig = {
+    damping: 45,
+    stiffness: 400,
+    mass: 1,
+    restDelta: 0.001,
+  },
+}: SmoothCursorProps) {
+  const lastMousePos = useRef<Position>({ x: 0, y: 0 });
+  const velocity = useRef<Position>({ x: 0, y: 0 });
+  const lastUpdateTime = useRef(Date.now());
+  const previousAngle = useRef(0);
+  const accumulatedRotation = useRef(0);
+  const [isEnabled, setIsEnabled] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const cursorX = useSpring(0, springConfig);
+  const cursorY = useSpring(0, springConfig);
+  const rotation = useSpring(0, {
+    ...springConfig,
+    damping: 60,
+    stiffness: 300,
+  });
+  const scale = useSpring(1, {
+    ...springConfig,
+    stiffness: 500,
+    damping: 35,
+  });
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(DESKTOP_POINTER_QUERY);
+
+    const updateEnabled = () => {
+      const nextIsEnabled = mediaQuery.matches;
+      setIsEnabled(nextIsEnabled);
+      if (!nextIsEnabled) setIsVisible(false);
+    };
+
+    updateEnabled();
+    mediaQuery.addEventListener("change", updateEnabled);
+    return () => mediaQuery.removeEventListener("change", updateEnabled);
+  }, []);
+
+  useEffect(() => {
+    if (!isEnabled) return;
+
+    let timeout: ReturnType<typeof setTimeout> | null = null;
+
+    const updateVelocity = (currentPos: Position) => {
+      const currentTime = Date.now();
+      const deltaTime = currentTime - lastUpdateTime.current;
+      if (deltaTime > 0) {
+        velocity.current = {
+          x: (currentPos.x - lastMousePos.current.x) / deltaTime,
+          y: (currentPos.y - lastMousePos.current.y) / deltaTime,
+        };
+      }
+      lastUpdateTime.current = currentTime;
+      lastMousePos.current = currentPos;
+    };
+
+    const smoothPointerMove = (e: PointerEvent) => {
+      if (!isTrackablePointer(e.pointerType)) return;
+      setIsVisible(true);
+      const currentPos = { x: e.clientX, y: e.clientY };
+      updateVelocity(currentPos);
+
+      const speed = Math.sqrt(
+        Math.pow(velocity.current.x, 2) + Math.pow(velocity.current.y, 2)
+      );
+
+      cursorX.set(currentPos.x);
+      cursorY.set(currentPos.y);
+
+      if (speed > 0.1) {
+        const currentAngle =
+          Math.atan2(velocity.current.y, velocity.current.x) * (180 / Math.PI) +
+          90;
+
+        let angleDiff = currentAngle - previousAngle.current;
+        if (angleDiff > 180) angleDiff -= 360;
+        if (angleDiff < -180) angleDiff += 360;
+        accumulatedRotation.current += angleDiff;
+        rotation.set(accumulatedRotation.current);
+        previousAngle.current = currentAngle;
+
+        scale.set(0.95);
+        if (timeout !== null) clearTimeout(timeout);
+        timeout = setTimeout(() => scale.set(1), 150);
+      }
+    };
+
+    let rafId = 0;
+    const throttledPointerMove = (e: PointerEvent) => {
+      if (!isTrackablePointer(e.pointerType)) return;
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        smoothPointerMove(e);
+        rafId = 0;
+      });
+    };
+
+    document.body.style.cursor = "none";
+    window.addEventListener("pointermove", throttledPointerMove, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("pointermove", throttledPointerMove);
+      document.body.style.cursor = "auto";
+      if (rafId) cancelAnimationFrame(rafId);
+      if (timeout !== null) clearTimeout(timeout);
+    };
+  }, [cursorX, cursorY, rotation, scale, isEnabled]);
+
+  if (!isEnabled) return null;
+
+  return (
+    <motion.div
+      style={{
+        position: "fixed",
+        left: cursorX,
+        top: cursorY,
+        translateX: "-50%",
+        translateY: "-50%",
+        rotate: rotation,
+        scale: scale,
+        zIndex: 100,
+        pointerEvents: "none",
+        willChange: "transform",
+        opacity: isVisible ? 1 : 0,
+      }}
+      initial={false}
+      animate={{ opacity: isVisible ? 1 : 0 }}
+      transition={{ duration: 0.15 }}
+    >
+      {cursor}
+    </motion.div>
+  );
+}
 
 export default SmoothCursor;
