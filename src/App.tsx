@@ -14,12 +14,14 @@ import ProjectForm from "./pages/admin/ProjectForm";
 import AdminRoute from "./components/AdminRoute";
 import SmoothCursor from "./components/SmoothCursor";
 import PixelBlastBackground from "./components/PixelBlastBackground";
+import PageLoader from "./components/PageLoader";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <PageLoader />
       <PixelBlastBackground />
       <SmoothCursor />
       <Toaster />
