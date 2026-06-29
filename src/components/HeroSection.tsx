@@ -17,7 +17,7 @@ const HeroSection = () => {
   const isDark = resolvedTheme !== "light";
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-transparent">
+    <section className={`relative min-h-screen w-full overflow-hidden ${isDark ? "bg-background" : "bg-transparent"}`}>
       {mounted && (
         <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
           <LineWaves
@@ -28,7 +28,7 @@ const HeroSection = () => {
             rotation={-45}
             edgeFadeWidth={0.0}
             colorCycleSpeed={1.0}
-            brightness={isDark ? 0.15 : 0.28}
+            brightness={isDark ? 0.12 : 0.28}
             color1={isDark ? "#8B7AB8" : "#4B3F6B"}
             color2={isDark ? "#B497CF" : "#6D5B9A"}
             color3={isDark ? "#6D5B9A" : "#2a2440"}
@@ -39,7 +39,7 @@ const HeroSection = () => {
           <div
             className={
               isDark
-                ? "absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(0_0%_0%/0.6)_0%,hsl(0_0%_0%/0.3)_55%,transparent_100%)]"
+                ? "absolute inset-0 bg-background/70"
                 : "absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(0_0%_100%/0.75)_0%,hsl(0_0%_100%/0.4)_55%,transparent_100%)]"
             }
           />
