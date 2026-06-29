@@ -136,7 +136,7 @@ const AboutSection = () => {
       {/* Sticky content container */}
       <div className="sticky top-0 h-screen flex flex-col items-center overflow-hidden">
         {/* Text content */}
-        <div className="text-center px-6 pt-16 md:pt-24 mb-8 md:mb-12">
+        <div className="relative z-10 text-center px-6 pt-16 md:pt-24 mb-8 md:mb-12">
           <span className="text-muted-foreground text-sm md:text-base mb-4 block">
             [ About Me ]
           </span>
@@ -148,11 +148,12 @@ const AboutSection = () => {
           </h2>
         </div>
 
-        {/* Card stack wrapper - clips overflow during sticky phase */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-[-1]">
+        {/* Card stack wrapper - positioned below text to prevent overlap */}
+        <div className="relative flex-1 w-full overflow-hidden pointer-events-none">
           {/* Card stack - centered within wrapper */}
           <div className="flex items-center justify-center w-full h-full">
             <div className="relative w-[240px] sm:w-[280px] md:w-[340px] h-[320px] sm:h-[360px] md:h-[440px] max-w-[80vw]">
+
               {cards.map((card, index) => (
                 <div 
                   key={card.id} 
