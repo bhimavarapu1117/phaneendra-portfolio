@@ -17,7 +17,7 @@ const HeroSection = () => {
   const isDark = resolvedTheme !== "light";
 
   return (
-    <section className={`relative min-h-screen w-full overflow-hidden ${isDark ? "bg-background" : "bg-transparent"}`}>
+    <section className="relative min-h-screen w-full overflow-hidden bg-background">
       {mounted && (
         <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
           <LineWaves
