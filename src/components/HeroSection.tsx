@@ -1,18 +1,44 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useTheme } from "next-themes";
 import Navbar from "./Navbar";
 import ProjectCarousel from "./ProjectCarousel";
 import VariableProximity from "./variable-proximity/VariableProximity";
 import TiltedCard from "./tilted-card/TiltedCard";
+// @ts-ignore - JSX module
+import LineWaves from "./line-waves/LineWaves.jsx";
 import phaneendraPhoto from "@/assets/tilted-photo.jpg.asset.json";
 
 
 const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const isDark = resolvedTheme !== "light";
 
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-transparent">
+      {mounted && (
+        <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
+          <LineWaves
+            speed={0.3}
+            innerLineCount={32}
+            outerLineCount={36}
+            warpIntensity={1.0}
+            rotation={-45}
+            edgeFadeWidth={0.0}
+            colorCycleSpeed={1.0}
+            brightness={isDark ? 0.25 : 0.5}
+            color1={isDark ? "#ffffff" : "#4B3F6B"}
+            color2={isDark ? "#B497CF" : "#6D5B9A"}
+            color3={isDark ? "#ffffff" : "#1a1a1a"}
+            enableMouseInteraction={false}
+            mouseInfluence={2.0}
+          />
+        </div>
+      )}
       <Navbar />
+
 
       <div
         ref={containerRef}
